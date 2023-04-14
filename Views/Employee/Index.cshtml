@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EmployeeClient.Models.Domain.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="card-header">
+    <h3 class="text-uppercase font-weight-bold">Employee List</h3>
+</div>
+<div class="card-body">
+    <div class="table-responsive table-responsive-lg">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th class="text-uppercase">First Name</th>
+                    <th class="text-uppercase">Last Name</th>
+                    <th class="text-uppercase">Email</th>
+                    <th class="text-uppercase">County</th>
+                    <th><a class="btn btn-primary btn-sm" asp-action="Create" asp-controller="Employee">Create New</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model)
+                {
+                    <tr>
+                        <td>@employee.FirstName</td>
+                        <td>@employee.LastName</td>
+                        <td>@employee.Email</td>
+                        <td>@employee.County</td>
+                        <td>
+                            <a class="btn btn-sm btn-success" asp-action="Edit" asp-controller="Employee" asp-route-id="@employee.Id">Update</a> |
+                            <a class="btn btn-sm btn-info" asp-action="Detail" asp-controller="Employee" asp-route-id="@employee.Id">View</a> |
+                            <a class="btn btn-sm btn-danger" onclick="return window.confirm('Are you sure you want to delete!');" asp-action="Delete" asp-controller="Employee" asp-route-id="@employee.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

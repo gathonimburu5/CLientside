@@ -1,0 +1,26 @@
+﻿@model EmployeeClient.Models.Domain.Category
+@{
+    ViewData["Title"] = "Create Category";
+}
+<div class="card-header">
+    <h5>Create category</h5>
+</div>
+<div class="card-body">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-2">
+                <button type="submit" class="btn btn-primary btn-lg">Create Category</button>
+                <a class="btn btn-close btn-lg" asp-controller="Category" asp-action="Index"></a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

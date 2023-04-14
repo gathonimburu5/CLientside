@@ -1,0 +1,34 @@
+﻿@model IEnumerable<EmployeeClient.Models.Domain.MeasureUnit>
+
+@{
+    ViewData["Title"] = "Measure Unit List";
+}
+<div class="card-header">
+    <h5>Measure Unit List</h5>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>REF</th>
+                    <th>Measure Unit</th>
+                    <th><a class="btn btn-dark btn-sm" asp-controller="Measure" asp-action="Create"><i class="fa fa-plus"></i> New Unit</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var measure in Model)
+                {
+                    <tr>
+                        <td>@measure.MeasureUnitId</td>
+                        <td>@measure.MeasureUnitName</td>
+                        <td>
+                            <a class="btn btn-success btn-sm" asp-controller="Measure" asp-action="Edit" asp-route-id="@measure.MeasureUnitId">Edit Unit</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Measure" asp-action="Delete" asp-route-id="@measure.MeasureUnitId">Delete Unit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

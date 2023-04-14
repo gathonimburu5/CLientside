@@ -1,0 +1,27 @@
+﻿@model EmployeeClient.Models.Domain.MeasureUnit
+
+@{
+    ViewData["Title"] = "Create Unit";
+}
+<div class="card-header">
+    <h5>Creating Measure Units</h5>
+</div>
+<div class="card-body">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MeasureUnitName" class="control-label"></label>
+                <input asp-for="MeasureUnitName" class="form-control" />
+                <span asp-validation-for="MeasureUnitName" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-2">
+                <a class="btn btn-danger btn-lg" asp-controller="Measure" asp-action="Index"><i class="fa fa-close"></i> Close</a>
+                <button class="btn btn-dark btn-lg" type="submit"><i class="fa fa-plus"></i> Create Unit</button>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
