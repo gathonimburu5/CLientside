@@ -31,7 +31,7 @@ namespace EmployeeClient.Controllers
             return View(customer);
         }
         [HttpPost]
-        public IActionResult Create([FromBody] Customer customer)
+        public IActionResult Create(Customer customer)
         {
             ViewBag.Currency = currencyService.GetAllCurrency().Select(x => new SelectListItem { Value = x.CurrencyId.ToString(), Text = x.CurrencyName, Selected = x.CurrencyId == customer.CurrencyId }).ToList();
             if (ModelState.IsValid)
@@ -62,7 +62,7 @@ namespace EmployeeClient.Controllers
             return View(customer);
         }
         [HttpPost]
-        public IActionResult Edit([FromBody] Customer customer)
+        public IActionResult Edit(Customer customer)
         {
             ViewBag.Currency = currencyService.GetAllCurrency().Select(x => new SelectListItem { Value = x.CurrencyId.ToString(), Text = x.CurrencyName, Selected = x.CurrencyId == customer.CurrencyId }).ToList();
             if (ModelState.IsValid)

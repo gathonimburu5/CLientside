@@ -12,17 +12,24 @@ namespace EmployeeClient.Services.Implementation
         public Customer CreateCustomer(Customer customer)
         {
             string json = JsonConvert.SerializeObject(customer);
-            HttpResponseMessage respo = client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json")).Result;
-            if (respo.IsSuccessStatusCode)
+            try
             {
-                string result = respo.Content.ReadAsStringAsync().Result;
-                var detail = JsonConvert.DeserializeObject<Customer>(result);
-                if (detail != null) customer = detail;
+                HttpResponseMessage respo = client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json")).Result;
+                if (respo.IsSuccessStatusCode)
+                {
+                    string result = respo.Content.ReadAsStringAsync().Result;
+                    var detail = JsonConvert.DeserializeObject<Customer>(result);
+                    if (detail != null) customer = detail;
+                }
+                else
+                {
+                    string result = respo.Content.ReadAsStringAsync().Result;
+                    throw new Exception("Error at the End Point." + result);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                string result = respo.Content.ReadAsStringAsync().Result;
-                throw new Exception("Error at the End Point." + result);
+                throw new Exception("Error at the API End Point" + ex.Message);
             }
             return customer;
         }
@@ -30,22 +37,23 @@ namespace EmployeeClient.Services.Implementation
         public string CustomerCode()
         {
             string code = "";
-            var customerCodes = GetAllCustomer().Max(x => x.CustomerCode);
-            if (customerCodes == null)
+            var CodesResults = GetAllCustomer().Max(x => x.CustomerCode);
+            if (CodesResults == null)
             {
-                code = "CUSM/0001/" + DateTime.Now.Year;
+                code = "CM/0001/" + DateTime.Now.Year;
             }
             else
             {
-                int countDigit = 1;
-                int.TryParse(customerCodes.Substring(5, 4), out countDigit);
-                code = $"CUSM/{(countDigit + 1).ToString().PadLeft(4, '0')}/{DateTime.Now.Year}";
+                int lastDigit = 1;
+                int.TryParse(CodesResults.Substring(3, 4), out lastDigit);
+                code = $"CM/{(lastDigit + 1).ToString().PadLeft(4, '0')}/{DateTime.Now.Year}";
             }
             return code;
         }
 
         public bool DeleteCustomer(int id)
         {
+            Customer customer = new Customer();
             url = url + "/" + id;
             HttpResponseMessage responseMessage = client.DeleteAsync(url).Result;
             if (!responseMessage.IsSuccessStatusCode)
@@ -82,8 +90,8 @@ namespace EmployeeClient.Services.Implementation
             if (responseMessage.IsSuccessStatusCode)
             {
                 string result = responseMessage.Content.ReadAsStringAsync().Result;
-                var dat = JsonConvert.DeserializeObject<Customer>(result);
-                if (dat != null) customer = dat;
+                var data = JsonConvert.DeserializeObject<Customer>(result);
+                if (data != null) customer = data;
             }
             else
             {

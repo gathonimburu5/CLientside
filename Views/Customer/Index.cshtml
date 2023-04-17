@@ -37,8 +37,8 @@
                         <td>@customer.CreditLimit</td>
                         <td>@customer.Currency.Abbreviation</td>
                         <td>
-                            <a class="btn btn-success btn-sm" asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CurrencyId">Edit</a>
-                            <a class="btn btn-danger btn-sm" asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CurrencyId">Delete</a>
+                            <a class="btn btn-success btn-sm" asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerId">Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustomerId">Delete</a>
                         </td>
                     </tr>
                 }
