@@ -1,0 +1,96 @@
+﻿@model EmployeeClient.Models.Domain.Invoice
+
+@{
+    ViewData["Title"] = "Invoice Edit";
+}
+<div class="card-header"><h5>Updating Invoices</h5></div>
+<div class="card-body">
+    <form asp-controller="Invoice" asp-action="Edit">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="InvoiceId" />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="InvoiceCode" class="control-label"></label>
+                    <input asp-for="InvoiceCode" class="form-control" readonly />
+                    <span asp-validation-for="InvoiceCode" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="CustomerId" class="control-label"></label>
+                    <select asp-for="CustomerId" class="form-control" asp-items="@ViewBag.Customer">
+                        <option value="">Choose Customer</option>
+                    </select>
+                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="InvoiceDate" class="control-label"></label>
+                    <input asp-for="InvoiceDate" class="form-control" />
+                    <span asp-validation-for="InvoiceDate" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>QTY</th>
+                        <th>Unit Price</th>
+                        <th>Sub Total</th>
+                        <th><button type="button" id="btnAdd" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.InvoiceDetails.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <select class="form-control" asp-for="@Model.InvoiceDetails[i].ProductId" asp-items="@ViewBag.Product">
+                                    <option value="">Select Product</option>
+                                </select>
+                                <span class="text-danger" asp-validation-summary="@Model.InvoiceDetails[i].ProductId"></span>
+                            </td>
+                            <td>
+                                <input class="form-control" asp-for="@Model.InvoiceDetails[i].Qty" />
+                                <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].Qty"></span>
+                            </td>
+                            <td>
+                                <input class="form-control" asp-for="@Model.InvoiceDetails[i].UnitPrice" />
+                                <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].UnitPrice"></span>
+                            </td>
+                            <td>
+                                <input class="form-control" asp-for="@Model.InvoiceDetails[i].SubTotal" />
+                                <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].SubTotal"></span>
+                            </td>
+                            <td><button type="button" id="btnRemove-@i" class="btn btn-danger btn-sm"><i class="fa fa-close"></i></button></td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th><label asp-for="Total" class="control-label"></label></th>
+                        <th>
+                            <input asp-for="Total" class="form-control" />
+                            <span asp-validation-for="Total" class="text-danger"></span>
+                        </th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="form-group pt-3 pull-right">
+            <button class="btn btn-primary btn-lg" type="submit">Update Invoice</button>
+            <a class="btn btn-danger btn-lg" asp-controller="Invoice" asp-action="Index"><i class="fa fa-close"></i></a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using NuGet.Packaging.Signing;
 
 namespace EmployeeClient.Models.Domain
 {
     public class Invoice
     {
         public int InvoiceId { get; set; }
-        [DataType(DataType.DateTime)]
-        public DateTime InvoiceDate { get; set; } = System.DateTime.Now;
+        public DateTimeOffset InvoiceDate { get; set; } = DateTimeOffset.UtcNow;
         public decimal Total { get; set; }
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
