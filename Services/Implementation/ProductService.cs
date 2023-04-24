@@ -1,6 +1,7 @@
 ﻿using EmployeeClient.Models.Domain;
 using EmployeeClient.Services.Interface;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace EmployeeClient.Services.Implementation
@@ -11,8 +12,24 @@ namespace EmployeeClient.Services.Implementation
         private HttpClient client = new HttpClient();
         public Product CreateProduct(Product product)
         {
-            string json = JsonConvert.SerializeObject(product);
-            HttpResponseMessage responseMessage = client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json")).Result;
+            var Content = new MultipartFormDataContent();
+            Content.Add(new StringContent(product.ProductCode), "ProductCode");
+            Content.Add(new StringContent(product.ProductName), "ProductName");
+            Content.Add(new StringContent(product.ProductDescription), "ProductDescription");
+            Content.Add(new StringContent(product.ProductQty.ToString()), "ProductQty");
+            Content.Add(new StringContent(product.ProductBuyingPrice.ToString()), "ProductBuyingPrice");
+            Content.Add(new StringContent(product.ProductSellingPrice.ToString()), "ProductSellingPrice");
+            Content.Add(new StringContent(product.ProductReorderLevel.ToString()), "ProductReorderLevel");
+            Content.Add(new StringContent(product.ProductVat.ToString()), "ProductVat");
+            Content.Add(new StringContent(product.CategoryId.ToString()), "CategoryId");
+            Content.Add(new StringContent(product.MeasureUnitId.ToString()), "MeasureUnitId");
+            Content.Add(new StringContent(product.ProductSupplier), "ProductSupplier");
+            if(product.ProductPhoto != null){
+                var fileContent = new StreamContent(product.ProductPhoto.OpenReadStream());
+                fileContent.Headers.ContentType = new MediaTypeHeaderValue(product.ProductPhoto.ContentType);
+                Content.Add(fileContent, "ProductPhoto", product.ProductPhoto.FileName);
+            }
+            HttpResponseMessage responseMessage = client.PostAsync(url, Content).Result;
             if (responseMessage.IsSuccessStatusCode)
             {
                 string content = responseMessage.Content.ReadAsStringAsync().Result;
@@ -98,12 +115,28 @@ namespace EmployeeClient.Services.Implementation
         {
             int id = product.ProductId;
             url = url + "/" + id;
-            string json = JsonConvert.SerializeObject(product);
-            HttpResponseMessage responseMessage = client.PutAsync(url, new StringContent(json, Encoding.UTF8, "application/json")).Result;
+            var Content = new MultipartFormDataContent();
+            Content.Add(new StringContent(product.ProductCode), "ProductCode");
+            Content.Add(new StringContent(product.ProductName), "ProductName");
+            Content.Add(new StringContent(product.ProductDescription), "ProductDescription");
+            Content.Add(new StringContent(product.ProductQty.ToString()), "ProductQty");
+            Content.Add(new StringContent(product.ProductBuyingPrice.ToString()), "ProductBuyingPrice");
+            Content.Add(new StringContent(product.ProductSellingPrice.ToString()), "ProductSellingPrice");
+            Content.Add(new StringContent(product.ProductReorderLevel.ToString()), "ProductReorderLevel");
+            Content.Add(new StringContent(product.ProductVat.ToString()), "ProductVat");
+            Content.Add(new StringContent(product.CategoryId.ToString()), "CategoryId");
+            Content.Add(new StringContent(product.MeasureUnitId.ToString()), "MeasureUnitId");
+            Content.Add(new StringContent(product.ProductSupplier), "ProductSupplier");
+            if(product.ProductPhoto != null){
+                var fileContent = new StreamContent(product.ProductPhoto.OpenReadStream());
+                fileContent.Headers.ContentType = new MediaTypeHeaderValue(product.ProductPhoto.ContentType);
+                Content.Add(fileContent, "ProductPhoto", product.ProductPhoto.FileName);
+            }
+            HttpResponseMessage responseMessage = client.PutAsync(url, Content).Result;
             if (!responseMessage.IsSuccessStatusCode)
             {
                 string result = responseMessage.Content.ReadAsStringAsync().Result;
-                throw new Exception("Error at the API" + result);
+                throw new Exception("Error at the API End Point" + result);
             }
             return product;
         }

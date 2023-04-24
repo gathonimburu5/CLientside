@@ -9,133 +9,133 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EmployeeClient
 build_property.RootNamespace = EmployeeClient
-build_property.ProjectDir = c:\Users\Ngenx\Desktop\Asp_Projects\EmployeeClient\EmployeeClient\
+build_property.ProjectDir = C:\Users\Ngenx\Desktop\Asp_Projects\EmployeeClient\EmployeeClient\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\Ngenx\Desktop\Asp_Projects\EmployeeClient\EmployeeClient
+build_property.MSBuildProjectDirectory = C:\Users\Ngenx\Desktop\Asp_Projects\EmployeeClient\EmployeeClient
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Book/Create.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Book/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Book/Edit.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Book/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Book/Index.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Book/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Book/View.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Book/View.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Category/Create.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Category/Detail.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Category/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Category/Index.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Category/Update.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Category/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Customer/Create.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Customer/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Customer/Edit.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Customer/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Customer/Index.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Customer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Employee/Create.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Employee/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Employee/Detail.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Employee/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Employee/Edit.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Employee/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Employee/Index.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Employee/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Home/Index.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Home/Privacy.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Invoice/Create.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Invoice/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Invoice/Edit.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Invoice/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Invoice/Index.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Invoice/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Measure/Create.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Measure/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVhc3VyZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Measure/Edit.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Measure/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVhc3VyZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Measure/Index.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Measure/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVhc3VyZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Product/Create.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Product/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Product/Edit.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Product/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Product/Index.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Shared/Error.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/_ViewImports.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/_ViewStart.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Shared/_Layout.cshtml]
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-gxolcl0g6r
