@@ -41,10 +41,10 @@
                         <th>QTY</th>
                         <th>Unit Price</th>
                         <th>Sub Total</th>
-                        <th><button type="button" id="btnAdd" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button></th>
+                        <th><button type="button" id="btnAdd" onclick="AddItem(this);" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
                     @for (int i = 0; i < Model.InvoiceDetails.Count; i++)
                     {
                         <tr>
@@ -55,18 +55,18 @@
                                 <span class="text-danger" asp-validation-summary="@Model.InvoiceDetails[i].ProductId"></span>
                             </td>
                             <td>
-                                <input class="form-control" asp-for="@Model.InvoiceDetails[i].Qty" />
+                                <input type="number" class="form-control" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].Qty" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].Qty"></span>
                             </td>
                             <td>
-                                <input class="form-control" asp-for="@Model.InvoiceDetails[i].UnitPrice" />
+                                <input type="number" step="0.001" class="form-control" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].UnitPrice" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].UnitPrice"></span>
                             </td>
                             <td>
-                                <input class="form-control" asp-for="@Model.InvoiceDetails[i].SubTotal" />
+                                <input type="number" readonly class="form-control" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].SubTotal" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].SubTotal"></span>
                             </td>
-                            <td><button type="button" id="btnRemove-@i" class="btn btn-danger btn-sm"><i class="fa fa-close"></i></button></td>
+                            <td><button type="button" id="btnRemove-@i" onclick="btnDelete(this);" class="btn btn-danger btn-sm"><i class="fa fa-close"></i></button></td>
                         </tr>
                     }
                 </tbody>
@@ -76,7 +76,7 @@
                         <th></th>
                         <th><label asp-for="Total" class="control-label"></label></th>
                         <th>
-                            <input asp-for="Total" class="form-control" />
+                            <input id="totalValue" type="number" step="0.001" readonly onchange="CalculateSubtotal();" asp-for="Total" class="form-control" />
                             <span asp-validation-for="Total" class="text-danger"></span>
                         </th>
                         <th></th>
@@ -91,6 +91,66 @@
     </form>
 </div>
 
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <script type="text/javascript">
+        function btnDelete(btn){
+            var tbody = document.getElementById('tbody');
+            var row = tbody.getElementsByTagName('tr');
+            if(row.length == 1){
+                alert("You can not remove this Row");
+                return;
+            }
+            $(btn).closest('tr').remove();
+            CalculateSubtotal();
+        }
+
+        function AddItem(btn){
+            var table = document.getElementById('tbody');
+            var row = table.getElementsByTagName('tr');
+
+            var rowOuterHtml = row[row.length - 1].outerHTML;
+
+            var lastRowIdx = row.length - 2;
+            var nextRowIdx = eval(lastRowIdx) + 1;
+
+            rowOuterHtml = rowOuterHtml.replaceAll('_' + lastRowIdx + '_', '_' + nextRowIdx + '_');
+            rowOuterHtml = rowOuterHtml.replaceAll('[' + lastRowIdx + ']', '[' + nextRowIdx + ']');
+            rowOuterHtml = rowOuterHtml.replaceAll('-' + lastRowIdx, '-' + nextRowIdx);
+
+            var newRow = table.insertRow();
+            newRow.innerHTML = rowOuterHtml;
+
+            //var x = document.getElementsByTagName("input");
+
+            //for (ctn = 0; ctn < x.length; ctn++) {
+            //    if (x[ctn].type == "text" && x[ctn].id.indexOf('_' + nextRowIdx + '_') > 0) {
+            //        x[ctn].value = '';
+            //    } else if (x[ctn].type == "number" && x[ctn].id.indexOf('_' + nextRowIdx + '_') > 0) {
+            //        x[ctn].value = 0;
+            //    }
+            //}
+        }
+
+        function CalculateSubtotal(){
+            var total = 0;
+            var tbody = document.getElementById('tbody');
+            $(tbody).find('tr').each(function(){
+                var qty = $(this).find("td:eq(1) input[type=number]").val();
+                var unitPrice = $(this).find("td:eq(2) input[type=number]").val();
+
+                var subTotal = qty * unitPrice;
+                $(this).find("td:eq(3) input[type=number]").val(subTotal);
+
+                total = total + subTotal;
+                $('#totalValue').val(total);
+            });
+        }
+        document.addEventListener('change', function(e){
+            if(event.target.id == 'totalValue'){
+                CalculateSubtotal();
+            }
+        }, false);
+    </script>
+    }

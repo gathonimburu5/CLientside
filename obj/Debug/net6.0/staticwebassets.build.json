@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VsDGrDOmWE6LdFnJYJBG+h0sdpK27RZvPiogwTRcnIE=",
+  "Hash": "K7EunW2nED97XMrMpasqGvbIs5hzWTeRCizs/lAtFvg=",
   "Source": "EmployeeClient",
   "BasePath": "_content/EmployeeClient",
   "Mode": "Default",
@@ -1137,6 +1137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\Uploads\\download (1).png",
+      "SourceId": "EmployeeClient",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\",
+      "BasePath": "_content/EmployeeClient",
+      "RelativePath": "Uploads/download (1).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\download (1).png"
     }
   ]
 }

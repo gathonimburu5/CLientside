@@ -31,7 +31,6 @@ namespace EmployeeClient.Controllers
             ViewBag.Customer = customerService.GetAllCustomer().Select(x => new SelectListItem { Value = x.CustomerId.ToString(), Text = x.FirstName + " " + x.LastName }).ToList();
             ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Value = x.ProductId.ToString(), Text = x.ProductName }).ToList();
             invoice.InvoiceDetails.Add(new InvoiceDetail() { InvoiceDetailId = 1 });
-            invoice.InvoiceDetails.Add(new InvoiceDetail() { InvoiceDetailId = 2 });
             invoice.InvoiceCode = invoiceService.InvoiceCodes();
             return View(invoice);
         }
