@@ -19,7 +19,7 @@
                     {
                         <img src="~/Uploads/download (1).png" class="img-fluid pb-2" style="width: 200px; height: 200px" id="imgPreview" />
                     }else{
-                        <img src="@Model.ProductImage" class="img-fluid pb-2" style="width: 200px; height: 200px" id="imgPreview" />
+                        <img src="https://localhost:7243/api/Product/Photo/@Model.ProductId" alt="Product Image" class="img-fluid pb-2" style="width: 200px; height: 200px" id="imgPreview" />
                     }                    
                     <input id="uploadProductImage" class="position-absolute invisible" onchange="Previewing(event);" asp-for="ProductPhoto" />
                     <label class="btn btn-secondary btn-sm" for="uploadProductImage" style="width: 200px;">Upload Product Photo</label>

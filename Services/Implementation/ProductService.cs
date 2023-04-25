@@ -24,11 +24,12 @@ namespace EmployeeClient.Services.Implementation
             Content.Add(new StringContent(product.CategoryId.ToString()), "CategoryId");
             Content.Add(new StringContent(product.MeasureUnitId.ToString()), "MeasureUnitId");
             Content.Add(new StringContent(product.ProductSupplier), "ProductSupplier");
-            if(product.ProductPhoto != null){
-                var fileContent = new StreamContent(product.ProductPhoto.OpenReadStream());
-                fileContent.Headers.ContentType = new MediaTypeHeaderValue(product.ProductPhoto.ContentType);
-                Content.Add(fileContent, "ProductPhoto", product.ProductPhoto.FileName);
-            }
+
+            //Uploading the Product Images
+            var fileContent = new StreamContent(product.ProductPhoto.OpenReadStream());
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(product.ProductPhoto.ContentType);
+            Content.Add(fileContent, "ProductPhoto", product.ProductPhoto.FileName);
+
             HttpResponseMessage responseMessage = client.PostAsync(url, Content).Result;
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -116,6 +117,7 @@ namespace EmployeeClient.Services.Implementation
             int id = product.ProductId;
             url = url + "/" + id;
             var Content = new MultipartFormDataContent();
+            Content.Add(new StringContent(id.ToString()), "ProductId");
             Content.Add(new StringContent(product.ProductCode), "ProductCode");
             Content.Add(new StringContent(product.ProductName), "ProductName");
             Content.Add(new StringContent(product.ProductDescription), "ProductDescription");
@@ -127,16 +129,21 @@ namespace EmployeeClient.Services.Implementation
             Content.Add(new StringContent(product.CategoryId.ToString()), "CategoryId");
             Content.Add(new StringContent(product.MeasureUnitId.ToString()), "MeasureUnitId");
             Content.Add(new StringContent(product.ProductSupplier), "ProductSupplier");
-            if(product.ProductPhoto != null){
-                var fileContent = new StreamContent(product.ProductPhoto.OpenReadStream());
-                fileContent.Headers.ContentType = new MediaTypeHeaderValue(product.ProductPhoto.ContentType);
-                Content.Add(fileContent, "ProductPhoto", product.ProductPhoto.FileName);
+            //Content.Add(new StringContent(product?.ProductImage), "ProductImage");
+
+            //here we are Uploading the photo.
+            if (product.ProductPhoto != null)
+            {
+                var fileContent = new StreamContent(product.ProductPhoto?.OpenReadStream());
+                fileContent.Headers.ContentType = new MediaTypeHeaderValue(product.ProductPhoto?.ContentType);
+                Content.Add(fileContent, "ProductPhoto", product.ProductPhoto?.FileName);
             }
+
             HttpResponseMessage responseMessage = client.PutAsync(url, Content).Result;
             if (!responseMessage.IsSuccessStatusCode)
             {
-                string result = responseMessage.Content.ReadAsStringAsync().Result;
-                throw new Exception("Error at the API End Point" + result);
+                string content = responseMessage.Content.ReadAsStringAsync().Result;
+                throw new Exception("Error Occured at the Api End Point" + content);
             }
             return product;
         }

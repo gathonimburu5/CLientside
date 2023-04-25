@@ -30,6 +30,8 @@ namespace EmployeeClient.Controllers
             Invoice invoice = new Invoice();
             ViewBag.Customer = customerService.GetAllCustomer().Select(x => new SelectListItem { Value = x.CustomerId.ToString(), Text = x.FirstName + " " + x.LastName }).ToList();
             ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Value = x.ProductId.ToString(), Text = x.ProductName }).ToList();
+            ViewBag.GetBuyingPrice = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductBuyingPrice.ToString(), Value = x.ProductId.ToString() }).ToList();
+            ViewBag.getVat = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductVat.ToString(), Value = x.ProductId.ToString() }).ToList();
             invoice.InvoiceDetails.Add(new InvoiceDetail() { InvoiceDetailId = 1 });
             invoice.InvoiceCode = invoiceService.InvoiceCodes();
             return View(invoice);
@@ -39,6 +41,8 @@ namespace EmployeeClient.Controllers
         {
             ViewBag.Customer = customerService.GetAllCustomer().Select(x => new SelectListItem { Value = x.CustomerId.ToString(), Text = x.FirstName + " " + x.LastName, Selected = x.CustomerId == invoice.CustomerId }).ToList();
             ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Value = x.ProductId.ToString(), Text = x.ProductName }).ToList();
+            ViewBag.GetBuyingPrice = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductBuyingPrice.ToString(), Value = x.ProductId.ToString() }).ToList();
+            ViewBag.getVat = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductVat.ToString(), Value = x.ProductId.ToString() }).ToList();
             if (ModelState.IsValid)
             {
                 var result = invoiceService.CreateInvoice(invoice);
@@ -63,13 +67,19 @@ namespace EmployeeClient.Controllers
         public IActionResult Edit(int id)
         {
             var invoice = invoiceService.GetInvoiceById(id);
-            ViewBag.Customer = customerService.GetAllCustomer().Select(x => new SelectListItem { Value = x.CustomerId.ToString(), Text = x.FirstName + " " + x.LastName }).ToList();
+            ViewBag.Customer = customerService.GetAllCustomer().Select(x => new SelectListItem { Value = x.CustomerId.ToString(), Text = x.FirstName + " " + x.LastName, Selected = x.CustomerId == invoice.CustomerId }).ToList();
             ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Value = x.ProductId.ToString(), Text = x.ProductName }).ToList();
+            ViewBag.GetBuyingPrice = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductBuyingPrice.ToString(), Value = x.ProductId.ToString() }).ToList();
+            ViewBag.getVat = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductVat.ToString(), Value = x.ProductId.ToString() }).ToList();
             return View(invoice);
         }
         [HttpPost]
         public IActionResult Edit(Invoice invoice)
         {
+            ViewBag.Customer = customerService.GetAllCustomer().Select(x => new SelectListItem { Value = x.CustomerId.ToString(), Text = x.FirstName + " " + x.LastName, Selected = x.CustomerId == invoice.CustomerId }).ToList();
+            ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Value = x.ProductId.ToString(), Text = x.ProductName }).ToList();
+            ViewBag.GetBuyingPrice = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductBuyingPrice.ToString(), Value = x.ProductId.ToString() }).ToList();
+            ViewBag.getVat = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductVat.ToString(), Value = x.ProductId.ToString() }).ToList();
             if (ModelState.IsValid)
             {
                 var result = invoiceService.UpdateInvoice(invoice);

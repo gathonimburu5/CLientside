@@ -44,7 +44,7 @@ namespace EmployeeClient.Controllers
                 if (result != null)
                 {
                     notyfService.Success("Product Successfully Created");
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(Index), "Product");
                 }
                 else
                 {
@@ -77,11 +77,11 @@ namespace EmployeeClient.Controllers
                 if (result != null)
                 {
                     notyfService.Success("Product Updated Successfully");
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(Index), "Product");
                 }
                 else
                 {
-                    notyfService.Error("Failed to Update Product!!");
+                    notyfService.Error("Error Occured while Updating Products Detsils!!");
                     return View(result);
                 }
             }
@@ -95,7 +95,7 @@ namespace EmployeeClient.Controllers
         {
             productService.DeleteProduct(id);
             notyfService.Success("Product Details Deleted Successful");
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index), "Product");
         }
     }
 }
