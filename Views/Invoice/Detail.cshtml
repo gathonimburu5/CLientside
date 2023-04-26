@@ -1,0 +1,79 @@
+@model EmployeeClient.Models.Domain.Invoice
+@{
+    ViewData["Title"] = "Invoice Detail";
+}
+<div class="card-header">
+    <h4 class="text-secondary">View Invoice Details</h4>
+</div>
+<div class="card-body">
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <input type="hidden" asp-for="InvoiceId" />
+    <div class="row">
+        <div class="col-md-4 border">
+            <p>NgenX LTD <br>
+            Mombassa Rd.</p>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4 border">
+            <h5 style="font-weight: bold;">Invoice To:</h5>
+            <p>
+                @Model.Customer.FirstName @Model.Customer.LastName, <br>
+                @Model.Customer.Address
+                @Model.Customer.PhysicalAddress, <br>
+                @Model.Customer.Email, <br>
+                @Model.Customer.PhoneNumber.
+            </p>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4 border">
+            <h5 style="font-weight: bold;">Invoice Details</h5>
+            <p>
+                Code: @Model.InvoiceCode, <br>
+                Date: @Model.InvoiceDate, <br>
+                Date Due: @Model.InvoiceDateDue, <br>
+                Days Due: 7 Days.
+            </p>
+        </div>
+    </div>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="text-uppercase">
+                <tr>
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Vat</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.InvoiceDetails.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.InvoiceDetails[i].Product.ProductName</td>
+                        <td>@Model.InvoiceDetails[i].Product.ProductDescription</td>
+                        <td>@Model.InvoiceDetails[i].Qty</td>
+                        <td>@Model.InvoiceDetails[i].UnitPrice</td>
+                        <td>@Model.InvoiceDetails[i].VAT</td>
+                        <td>@Model.InvoiceDetails[i].SubTotal</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="5"><b>Total Amount</b></th>
+                    <th>@Model.Total</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="form-group pull-right">
+        <a class="btn btn-danger" asp-controller="Invoice" asp-action="Index"><i class="fa fa-backward"></i></a>
+    </div>
+</div>

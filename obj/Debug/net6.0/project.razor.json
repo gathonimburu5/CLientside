@@ -18438,6 +18438,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\Views\\Invoice\\Detail.cshtml",
+      "TargetPath": "Views\\Invoice\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\Views\\Employee\\Create.cshtml",
       "TargetPath": "Views\\Employee\\Create.cshtml",
       "FileKind": "mvc"

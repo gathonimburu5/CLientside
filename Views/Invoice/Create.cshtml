@@ -7,14 +7,14 @@
 <div class="card-body">
     <form asp-controller="Invoice" asp-action="Create">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-2 col-sm-2 col-lg-2">
                 <div class="form-group">
                     <label asp-for="InvoiceCode" class="control-label"></label>
                     <input asp-for="InvoiceCode" class="form-control" readonly />
                     <span asp-validation-for="InvoiceCode" class="text-danger"></span>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
                     <label asp-for="CustomerId" class="control-label"></label>
                     <select asp-for="CustomerId" class="form-control" asp-items="@ViewBag.Customer">
@@ -23,11 +23,18 @@
                     <span asp-validation-for="CustomerId" class="text-danger"></span>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3 col-sm-3 col-lg-3">
                 <div class="form-group">
                     <label asp-for="InvoiceDate" class="control-label"></label>
                     <input asp-for="InvoiceDate" class="form-control" />
                     <span asp-validation-for="InvoiceDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-lg-3">
+                <div class="form-group">
+                    <label asp-for="InvoiceDateDue" class="control-label"></label>
+                    <input asp-for="InvoiceDateDue" class="form-control" />
+                    <span asp-validation-for="InvoiceDateDue" class="text-danger"></span>
                 </div>
             </div>
         </div>
@@ -155,7 +162,7 @@
             });
         }
         document.addEventListener('change', function(e){
-            if(event.target.id == 'totalValue'){
+            if(e.target.id == 'totalValue'){
                 CalculateSubtotal();
             }
         }, false);
