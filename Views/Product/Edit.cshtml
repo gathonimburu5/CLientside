@@ -63,7 +63,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="CategoryId" class="control-label"></label>
-                            <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.Category">
+                            <select asp-for="CategoryId" class="form-control form-select categoryData" asp-items="@ViewBag.Category">
                                 <option value="">Choose Category</option>
                             </select>
                             <span asp-validation-for="CategoryId" class="text-danger"></span>
@@ -104,7 +104,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="MeasureUnitId" class="control-label"></label>
-                            <select asp-for="MeasureUnitId" class="form-control" asp-items="@ViewBag.Measure">
+                            <select asp-for="MeasureUnitId" class="form-control form-select measureData" asp-items="@ViewBag.Measure">
                                 <option value="">Select Measure Unit</option>
                             </select>
                             <span asp-validation-for="MeasureUnitId" class="text-danger"></span>
@@ -132,6 +132,9 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script type="text/javascript">
+        $(document).ready(function(){
+            $('.categoryData').select2(); $('.measureData').select2();
+        })
         var Previewing = function (event) {
             var result = document.getElementById('imgPreview');
             result.src = URL.createObjectURL(event.target.files[0]);

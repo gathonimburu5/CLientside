@@ -17,7 +17,7 @@
             <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
                     <label asp-for="CustomerId" class="control-label"></label>
-                    <select asp-for="CustomerId" class="form-control" asp-items="@ViewBag.Customer">
+                    <select asp-for="CustomerId" class="form-control form-select customerData" asp-items="@ViewBag.Customer">
                         <option value="">Choose Customer</option>
                     </select>
                     <span asp-validation-for="CustomerId" class="text-danger"></span>
@@ -55,7 +55,7 @@
                     {
                         <tr>
                             <td>
-                                <select class="form-control" onchange="GetBuyingPrice(this,'unitId-@i'); GetProductVat(this,'vatId-@i');" asp-for="@Model.InvoiceDetails[i].ProductId" asp-items="@ViewBag.Product">
+                                <select class="form-control form-select" onchange="GetBuyingPrice(this,'unitId-@i'); GetProductVat(this,'vatId-@i');" asp-for="@Model.InvoiceDetails[i].ProductId" asp-items="@ViewBag.Product">
                                     <option value="">Select Product</option>
                                 </select>
                                 <span class="text-danger" asp-validation-summary="@Model.InvoiceDetails[i].ProductId"></span>
@@ -111,6 +111,9 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script type="text/javascript">
+        $(document).ready(function(){
+            $('.customerData').select2();
+        });
         function btnDelete(btn){
             var tbody = document.getElementById('tbody');
             var row = tbody.getElementsByTagName('tr');

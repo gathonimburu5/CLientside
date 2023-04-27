@@ -5,20 +5,24 @@
 <div class="card-header">
     <h4 class="text-secondary">View Invoice Details</h4>
 </div>
-<div class="card-body">
+<div class="card-body col-md-12 col-sm-12 col-lg-12" id="printBtn" data-size="A4">
     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
     <input type="hidden" asp-for="InvoiceId" />
     <div class="row">
-        <div class="col-md-4 border">
-            <p>NgenX LTD <br>
-            Mombassa Rd.</p>
+        <div class="col-md-4 col-sm-4 col-lg-4 border">
+            <h4 class="text-center"></h4>
+            <h4 class="text-center"><b>#PURCHASE INVOICE</b></h4>
+            <h4 class="text-center"></h4>
         </div>
-        <div class="col-md-4"></div>
-        <div class="col-md-4"></div>
+        <div class="col-md-4 col-sm-4 col-lg-4"></div>
+        <div class="col-md-4 col-sm-4 col-lg-4 border">            
+            <p>NgenX LTD <br>
+                Mombassa Rd.</p>
+        </div>
     </div>
     <br>
     <div class="row">
-        <div class="col-md-4 border">
+        <div class="col-md-4 col-sm-4 col-lg-4 border">
             <h5 style="font-weight: bold;">Invoice To:</h5>
             <p>
                 @Model.Customer.FirstName @Model.Customer.LastName, <br>
@@ -28,8 +32,8 @@
                 @Model.Customer.PhoneNumber.
             </p>
         </div>
-        <div class="col-md-4"></div>
-        <div class="col-md-4 border">
+        <div class="col-md-4 col-sm-4 col-lg-4"></div>
+        <div class="col-md-4 col-sm-4 col-lg-4 border">
             <h5 style="font-weight: bold;">Invoice Details</h5>
             <p>
                 Code: @Model.InvoiceCode, <br>
@@ -68,12 +72,65 @@
             <tfoot>
                 <tr>
                     <th colspan="5"><b>Total Amount</b></th>
-                    <th>@Model.Total</th>
+                    <th style="text-decoration-style: double; text-decoration-line: underline;">@Model.Total</th>
                 </tr>
             </tfoot>
         </table>
     </div>
-    <div class="form-group pull-right">
-        <a class="btn btn-danger" asp-controller="Invoice" asp-action="Index"><i class="fa fa-backward"></i></a>
-    </div>
 </div>
+<div class="form-group pull-right">
+    <button type="button" class="btn btn-primary"
+        onclick="printContent('printBtn'); "><i class="fa fa-print"></i> Print
+        Invoice</button>
+    <a class="btn btn-danger" asp-controller="Invoice" asp-action="Index"><i
+            class="fa fa-backward"></i> Back</a>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+            function printContent() {
+            $("#printBtn").printThis({
+                debug: false,               // show the iframe for debugging
+                importCSS: true,            // import parent page css
+                importStyle: true,         // import style tags
+                printContainer: true,       // print outer container/$.selector
+                loadCSS: "",                // path to additional css file - use an array [] for multiple
+                pageTitle: "My Title",              // add title to print page
+                removeInline: false,        // remove inline styles from print elements
+                removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+                printDelay: 333,            // variable print delay
+                header: null,               // prefix to html
+                footer: null,               // postfix to html
+                base: false,                // preserve the BASE tag or accept a string for the URL
+                formValues: true,           // preserve input/form values
+                canvas: false,              // copy canvas content
+                //doctypeString: '...',       // enter a different doctype for older markup
+                removeScripts: false,       // remove script tags from print content
+                copyTagClasses: true,      // copy classes from the html & body tag
+                beforePrintEvent: null,     // function for printEvent in iframe
+                beforePrint: null,          // function called before iframe is filled
+                afterPrint: null            // function called before iframe is removed
+            });
+            }
+            function printContent(el) {
+                var restorepage = $('body').html();
+                var printcontent = $('#' + el).clone();
+                $('body').empty().html(printcontent);
+                window.print();
+                $('body').html(restorepage);
+            }
+            function printdiv(printpage) {
+                var headstr = "<html><head><title></title></head><body>";
+                var footstr = "</body>";
+                var newstr = document.all.item(printpage).innerHTML;
+                var oldstr = document.body.innerHTML;
+                document.body.innerHTML = headstr + newstr + footstr;
+                window.print();
+                document.body.innerHTML = oldstr;
+                return false;
+            }
+        </script>
+}
