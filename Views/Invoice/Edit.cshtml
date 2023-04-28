@@ -12,14 +12,14 @@
             <div class="col-md-2 col-sm-2 col-lg-2">
                 <div class="form-group">
                     <label asp-for="InvoiceCode" class="control-label"></label>
-                    <input asp-for="InvoiceCode" class="form-control" readonly />
+                    <input asp-for="InvoiceCode" class="form-control form-control-sm" readonly />
                     <span asp-validation-for="InvoiceCode" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
                     <label asp-for="CustomerId" class="control-label"></label>
-                    <select asp-for="CustomerId" class="form-control form-select customerData" asp-items="@ViewBag.Customer">
+                    <select asp-for="CustomerId" class="form-control form-control-sm form-select customerData" asp-items="@ViewBag.Customer">
                         <option value="">Choose Customer</option>
                     </select>
                     <span asp-validation-for="CustomerId" class="text-danger"></span>
@@ -28,14 +28,20 @@
             <div class="col-md-3 col-sm-3 col-lg-3">
                 <div class="form-group">
                     <label asp-for="InvoiceDate" class="control-label"></label>
-                    <input asp-for="InvoiceDate" class="form-control" />
+                    <div class="input-group">
+                        <div class="input-group-text" id="dateInvoiceCreated"><i class="fa fa-calendar"></i></div>
+                        <input asp-for="InvoiceDate" class="form-control form-control-sm" aria-describedby="dateInvoiceCreated" />
+                    </div>
                     <span asp-validation-for="InvoiceDate" class="text-danger"></span>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-3 col-lg-3">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label asp-for="InvoiceDateDue" class="control-label"></label>
-                    <input asp-for="InvoiceDateDue" class="form-control" />
+                    <div class="input-group">
+                        <div class="input-group-text" id="dateDueofInvoice"><i class="fa fa-calendar"></i></div>                  
+                        <input asp-for="InvoiceDateDue" class="form-control form-control-sm" aria-describedby="dateDueofInvoice" />
+                    </div>
                     <span asp-validation-for="InvoiceDateDue" class="text-danger"></span>
                 </div>
             </div>
@@ -57,26 +63,26 @@
                     {
                         <tr>
                             <td>
-                                <select class="form-control form-select" onchange="GetBuyingPrice(this,'unitId-@i'); GetProductVat(this,'vatId-@i');" asp-for="@Model.InvoiceDetails[i].ProductId" asp-items="@ViewBag.Product">
+                                <select class="form-control form-control-sm form-select-sm form-select" onchange="GetBuyingPrice(this,'unitId-@i'); GetProductVat(this,'vatId-@i');" asp-for="@Model.InvoiceDetails[i].ProductId" asp-items="@ViewBag.Product">
                                     <option value="">Select Product</option>
                                 </select>
                                 <span class="text-danger" asp-validation-summary="@Model.InvoiceDetails[i].ProductId"></span>
                             </td>
                             <td>
-                                <input type="number" class="form-control" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].Qty" />
+                                <input type="number" class="form-control form-control-sm" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].Qty" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].Qty"></span>
                             </td>
                             <td>
-                                <input type="number" step="0.001" readonly id="unitId-@i" class="form-control" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].UnitPrice" />
+                                <input type="number" step="0.001" readonly id="unitId-@i" class="form-control form-control-sm" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].UnitPrice" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].UnitPrice"></span>
                             </td>
                             <td>
-                                <input type="number" step="0.001" readonly id="vatId-@i" class="form-control" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].VAT" />
+                                <input type="number" step="0.001" readonly id="vatId-@i" class="form-control form-control-sm" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].VAT" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].VAT"></span>
                             </td>
                             <td>
                                 <input type="hidden" asp-for="@Model.InvoiceDetails[i].IsDeleted" />
-                                <input type="number" readonly class="form-control" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].SubTotal" />
+                                <input type="number" readonly class="form-control form-control-sm" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].SubTotal" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].SubTotal"></span>
                             </td>
                             <td><button type="button" id="btnRemove-@i" onclick="btnDelete(this);" class="btn btn-danger btn-sm"><i class="fa fa-close"></i></button></td>
@@ -90,7 +96,7 @@
                         <th></th>
                         <th><label asp-for="Total" class="control-label"></label></th>
                         <th>
-                            <input id="totalValue" type="number" step="0.001" readonly onchange="CalculateSubtotal();" asp-for="Total" class="form-control" />
+                            <input id="totalValue" type="number" step="0.001" readonly onchange="CalculateSubtotal();" asp-for="Total" class="form-control form-control-sm" />
                             <span asp-validation-for="Total" class="text-danger"></span>
                         </th>
                         <th></th>

@@ -12,7 +12,7 @@
                 <tr>
                     <th>Ref</th>
                     <th>Category Name</th>
-                    <th><a class="btn btn-dark btn-sm" asp-controller="Category" asp-action="Create">New Category</a></th>
+                    <th><a class="btn btn-dark btn-sm" asp-controller="Category" asp-action="Create"><i class="fa fa-plus"></i> New Category</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +23,6 @@
                         <td>@category.CategoryName</td>
                         <td>
                             <a class="btn btn-success btn-sm" asp-controller="Category" asp-action="Update" asp-route-id="@category.CategoryId">Edit</a>
-                            <a class="btn btn-secondary btn-sm" asp-controller="Category" asp-action="Detail" asp-route-id="@category.CategoryId">View</a>
                             <a class="btn btn-danger btn-sm" asp-controller="Category" asp-action="Delete" asp-route-id="@category.CategoryId">Delete</a>
                         </td>
                     </tr>

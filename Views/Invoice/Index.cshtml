@@ -33,14 +33,12 @@
                         <td>@invoice.Customer.CreditLimit</td>
                         <td>@invoice.Total</td>
                         <td>
-                            <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px;" onchange="DeleteConfirmation(event)">
+                            <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px;"  onchange="DeleteConfirmation(event)">
                                 <option value="">Choose Actions</option>
                                 <option value="@Url.Action("Edit","Invoice", new{ id = @invoice.InvoiceId})">Edit Invoice</option>
                                 <option value="@Url.Action("Detail","Invoice", new{ id = @invoice.InvoiceId})">View Invoice</option>
-                                <option value="@Url.Action("Delete","Invoice", new{ id = @invoice.InvoiceId})">Delete Invoice</option>
+                                <option value="@Url.Action("Delete","Invoice", new{ id = @invoice.InvoiceId})" data-invoice-code="@invoice.InvoiceCode">Delete Invoice</option>
                             </select>
-                            @* <a class="btn btn-success btn-sm" asp-controller="Invoice" asp-action="Edit" asp-route-id="@invoice.InvoiceId">Edit</a>
-                            <a class="btn btn-danger btn-sm" asp-controller="Invoice" asp-action="Delete" asp-route-id="@invoice.InvoiceId">Delete</a> *@
                         </td>
                     </tr>
                 }
@@ -55,11 +53,15 @@
             var selectEvent = event.target;
             var value = selectEvent.value;
             if(value.startsWith("/Invoice/Delete/")){
-                var notyf = new Notyf();
-                notyf.confirm("Are you sure you want to Delete!", function(){
+                var invoiceCode = selectEvent.options[selectEvent.selectedIndex].getAttribute("data-invoice-code")
+                var confirmMessage = window.confirm("Are you sure you want to delete this invoice " + invoiceCode + "?");
+                if(confirmMessage)
+                {
                     window.location.href = value;
-                });
-            }
+                }
+            }else if(value.startsWith("/Invoice/Edit/")){
+                window.location.href = value;
+            }else if(value.startsWith("/Invoice/Detail/")){ window.location.href = value; }
         }
     </script>
 }

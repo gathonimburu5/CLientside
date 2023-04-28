@@ -31,14 +31,17 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="ProductName" class="control-label"></label>
-                            <input asp-for="ProductName" class="form-control" />
+                            <div class="input-group">
+                                <div class="input-group-text" id="productIcon"><i class="fa fa-product-hunt"></i></div>
+                                <input asp-for="ProductName" class="form-control form-control-sm" aria-describedby="productIcon" />
+                            </div>
                             <span asp-validation-for="ProductName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="ProductCode" class="control-label"></label>
-                            <input asp-for="ProductCode" class="form-control" readonly />
+                            <input asp-for="ProductCode" class="form-control form-control-sm" readonly />
                             <span asp-validation-for="ProductCode" class="text-danger"></span>
                         </div>
                     </div>
@@ -47,14 +50,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="ProductQty" class="control-label"></label>
-                            <input asp-for="ProductQty" class="form-control" />
+                            <input asp-for="ProductQty" class="form-control form-control-sm" />
                             <span asp-validation-for="ProductQty" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="ProductVat" class="control-label"></label>
-                            <input asp-for="ProductVat" class="form-control" />
+                            <input asp-for="ProductVat" class="form-control form-control-sm" />
                             <span asp-validation-for="ProductVat" class="text-danger"></span>
                         </div>
                     </div>
@@ -63,7 +66,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="CategoryId" class="control-label"></label>
-                            <select asp-for="CategoryId" class="form-control form-select categoryData" asp-items="@ViewBag.Category">
+                            <select asp-for="CategoryId" class="form-control form-control-sm form-select-sm select2 form-select categoryData" asp-items="@ViewBag.Category">
                                 <option value="">Choose Category</option>
                             </select>
                             <span asp-validation-for="CategoryId" class="text-danger"></span>
@@ -72,7 +75,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="ProductReorderLevel" class="control-label"></label>
-                            <input asp-for="ProductReorderLevel" class="form-control" />
+                            <input asp-for="ProductReorderLevel" class="form-control form-control-sm" />
                             <span asp-validation-for="ProductReorderLevel" class="text-danger"></span>
                         </div>
                     </div>
@@ -81,14 +84,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="ProductBuyingPrice" class="control-label"></label>
-                            <input asp-for="ProductBuyingPrice" class="form-control" />
+                            <input asp-for="ProductBuyingPrice" class="form-control form-control-sm" />
                             <span asp-validation-for="ProductBuyingPrice" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="ProductSellingPrice" class="control-label"></label>
-                            <input asp-for="ProductSellingPrice" class="form-control" />
+                            <input asp-for="ProductSellingPrice" class="form-control form-control-sm" />
                             <span asp-validation-for="ProductSellingPrice" class="text-danger"></span>
                         </div>
                     </div>
@@ -97,14 +100,17 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="ProductSupplier" class="control-label"></label>
-                            <input asp-for="ProductSupplier" class="form-control" />
+                            <div class="input-group">
+                                <div class="input-group-text" id="supplierUserIcon"><i class="fa fa-user"></i></div>
+                                <input asp-for="ProductSupplier" class="form-control form-control-sm" aria-describedby="supplierUserIcon" />
+                            </div>
                             <span asp-validation-for="ProductSupplier" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="MeasureUnitId" class="control-label"></label>
-                            <select asp-for="MeasureUnitId" class="form-control form-select measureData" asp-items="@ViewBag.Measure">
+                            <select asp-for="MeasureUnitId" class="form-control form-select form-select-sm measureData" asp-items="@ViewBag.Measure">
                                 <option value="">Select Measure Unit</option>
                             </select>
                             <span asp-validation-for="MeasureUnitId" class="text-danger"></span>
@@ -115,7 +121,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label asp-for="ProductDescription" class="control-label"></label>
-                            <textarea asp-for="ProductDescription" class="form-control"></textarea>
+                            <textarea asp-for="ProductDescription" class="form-control form-control-sm"></textarea>
                             <span asp-validation-for="ProductDescription" class="text-danger"></span>
                         </div>
                     </div>
