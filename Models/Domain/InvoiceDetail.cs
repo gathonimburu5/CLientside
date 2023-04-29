@@ -14,6 +14,9 @@ namespace EmployeeClient.Models.Domain
 		[ForeignKey("Invoice")]
 		public int InvoiceId { get; set; }
 		public virtual Invoice? Invoice { get; set; }
+		[ForeignKey("Discount")]
+        public int DiscountId { get; set; }
+        public virtual Discount? Discount { get; private set; }
 		public decimal VAT { get; set; }
 		[NotMapped]
 		public bool IsDeleted { get; set; } = false;

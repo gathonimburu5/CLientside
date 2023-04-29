@@ -91,10 +91,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th><label asp-for="Total" class="control-label"></label></th>
+                        <th class="text-end" colspan="4"><label asp-for="Total" class="control-label">Total value</label></th>
                         <th>
                             <input id="totalValue" type="number" step="0.001" readonly onchange="CalculateSubtotal();" asp-for="Total" class="form-control form-control-sm" />
                             <span asp-validation-for="Total" class="text-danger"></span>

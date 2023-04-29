@@ -1,0 +1,39 @@
+@model IEnumerable<EmployeeClient.Models.Domain.Discount>
+@{
+    ViewData["Title"] = "Discount List";
+}
+<div class="card-header">
+    <h3>All Discount List.</h3>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr class="text-uppercase">
+                    <th>REF</th>
+                    <th>Discount Name</th>
+                    <th>Value</th>
+                    <th>From-Date</th>
+                    <th>Expire-Date</th>
+                    <th><a class="btn btn-dark btn-sm" asp-controller="Discount" asp-action="Create"><i class="fa fa-plus-square"></i> New</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var discount in Model)
+                {
+                    <tr>
+                        <td>@discount.DiscountId</td>
+                        <td>@discount.DiscountName</td>
+                        <td>@discount.DiscountValue</td>
+                        <td>@discount.StartDate</td>
+                        <td>@discount.ExpireDate</td>
+                        <td>
+                            <a class="btn btn-success btn-sm" asp-controller="Discount" asp-action="Edit" asp-route-id="@discount.DiscountId"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Discount" asp-action="Delete" asp-route-id="@discount.DiscountId"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
