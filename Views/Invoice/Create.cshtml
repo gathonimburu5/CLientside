@@ -10,7 +10,10 @@
             <div class="col-md-2 col-sm-2 col-lg-2">
                 <div class="form-group">
                     <label asp-for="InvoiceCode" class="control-label"></label>
-                    <input asp-for="InvoiceCode" class="form-control form-control-sm" readonly />
+                    <div class="input-group">
+                        <div class="input-group-text" id="codeIcon"><i class="fa fa-barcode"></i></div>
+                        <input asp-for="InvoiceCode" class="form-control form-control-sm" aria-describedby="codeIcon" readonly />
+                    </div>
                     <span asp-validation-for="InvoiceCode" class="text-danger"></span>
                 </div>
             </div>
@@ -37,7 +40,7 @@
                 <div class="form-group">
                     <label asp-for="InvoiceDateDue" class="control-label"></label>
                     <div class="input-group">
-                        <div class="input-group-text" id="dateDueofInvoice"><i class="fa fa-calendar"></i></div>                  
+                        <div class="input-group-text" id="dateDueofInvoice"><i class="fa fa-calendar"></i></div>
                         <input asp-for="InvoiceDateDue" class="form-control form-control-sm" aria-describedby="dateDueofInvoice" />
                     </div>
                     <span asp-validation-for="InvoiceDateDue" class="text-danger"></span>
@@ -52,6 +55,8 @@
                         <th>QTY</th>
                         <th>Unit Price</th>
                         <th>VAT</th>
+                        <th>Discount</th>
+                        <th>Discount Value</th>
                         <th>Sub Total</th>
                         <th><button type="button" id="btnAdd" onclick="AddItem(this);" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button></th>
                     </tr>
@@ -61,7 +66,7 @@
                     {
                         <tr>
                             <td>
-                                <select class="form-control form-select-sm form-control-sm form-select" onchange="GetBuyingPrice(this,'unitId-@i'); GetProductVat(this,'vatId-@i');" asp-for="@Model.InvoiceDetails[i].ProductId" asp-items="@ViewBag.Product">
+                                <select class="form-control form-select-sm form-control-sm form-select" onchange="GetBuyingPrice(this,'unitId-@i'); GetProductVat(this,'vatId-@i'); CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].ProductId" asp-items="@ViewBag.Product">
                                     <option value="">Select Product</option>
                                 </select>
                                 <span class="text-danger" asp-validation-summary="@Model.InvoiceDetails[i].ProductId"></span>
@@ -71,16 +76,29 @@
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].Qty"></span>
                             </td>
                             <td>
-                                <input type="number" step="0.001" id="unitId-@i" readonly class="form-control form-control-sm" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].UnitPrice" />
+                                <input type="number" step="0.001" id="unitId-@i" readonly class="form-control form-control-sm pull-right" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].UnitPrice" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].UnitPrice"></span>
                             </td>
                             <td>
-                                <input type="number" step="0.001" id="vatId-@i" readonly class="form-control form-control-sm" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].VAT" />
+                                <input type="number" step="0.001" id="vatId-@i" readonly class="form-control form-control-sm pull-right" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].VAT" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].VAT"></span>
                             </td>
                             <td>
+                                <select class="form-control form-select-sm form-control-sm form-select" onchange="GetDiscountValue(this, 'discValue-@i'); CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].DiscountId" asp-items="@ViewBag.Discount">
+                                    <option value="0">Select Option</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].DiscountId"></span>
+                            </td>
+                            <td>
+                                <div class="input-group">
+                                    <input type="number" step="0.001" readonly class="form-control form-control-sm pull-right" id="discValue-@i" aria-describedby="discountValueIcon" onchange="CalculateSubtotal(); " asp-for="@Model.InvoiceDetails[i].DiscountValue" />
+                                    <div class="input-group-text" id="discountValueIcon"><b>%</b></div>
+                                </div>
+                                <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].DiscountValue"></span>
+                            </td>
+                            <td>
                                 <input type="hidden" asp-for="@Model.InvoiceDetails[i].IsDeleted" />
-                                <input type="number" readonly class="form-control form-control-sm" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].SubTotal" />
+                                <input type="number" readonly class="form-control form-control-sm pull-right" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].SubTotal" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].SubTotal"></span>
                             </td>
                             <td><button type="button" id="btnRemove-@i" onclick="btnDelete(this);" class="btn btn-danger btn-sm"><i class="fa fa-close"></i></button></td>
@@ -89,9 +107,9 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th class="text-end" colspan="4"><label asp-for="Total" class="control-label">Total value</label></th>
+                        <th class="text-end" colspan="6"><label asp-for="Total" class="control-label">Total value</label></th>
                         <th>
-                            <input id="totalValue" type="number" step="0.001" readonly onchange="CalculateSubtotal();" asp-for="Total" class="form-control form-control-sm" />
+                            <input id="totalValue" type="number" step="0.001" readonly onchange="CalculateSubtotal();" asp-for="Total" style="text-decoration-style: double; text-decoration-line: underline;" class="form-control form-control-sm pull-right" />
                             <span asp-validation-for="Total" class="text-danger"></span>
                         </th>
                         <th></th>
@@ -106,6 +124,7 @@
         <div class="form-group">
             <select id="buyingPrice" asp-items="@ViewBag.GetBuyingPrice" style="visibility: hidden;"></select>
             <select id="gettingVat" asp-items="@ViewBag.getVat" style="visibility: hidden;"></select>
+            <select id="gettingDiscountValue" asp-items="@ViewBag.DiscountValue" style="visibility: hidden;"></select>
         </div>
     </form>
 </div>
@@ -158,12 +177,14 @@
                 var qty = $(this).find("td:eq(1) input[type=number]").val();
                 var unitPrice = $(this).find("td:eq(2) input[type=number]").val();
                 var vat = $(this).find("td:eq(3) input[type = number]").val();
+                var discountValue = $(this).find("td:eq(5) input[type = number]").val();
 
                 var calculate = (qty * unitPrice);
                 vat = (vat * calculate)/100;
+                discountValue = (discountValue * calculate)/100;
 
-                var subTotal = (calculate + vat);
-                $(this).find("td:eq(4) input[type=number]").val(subTotal);
+                var subTotal = ((calculate + vat) - discountValue);
+                $(this).find("td:eq(6) input[type=number]").val(subTotal);
 
                 total = total + subTotal;
                 $('#totalValue').val(total);
@@ -202,7 +223,22 @@
                     vatData.value = items[i].text;
                     return;
                 }
-            } 
+            }
+        }
+        function GetDiscountValue(DiscountId, discValue)
+        {
+            var selectDiscountValue = document.getElementById('gettingDiscountValue');
+            var discount = document.getElementById(discValue);
+            var items = selectDiscountValue.options;
+            var discountValue = DiscountId.value;
+            for(var i = items.length-1; i >= 0; i--)
+            {
+                if(items[i].value == discountValue)
+                {
+                    discount.value = items[i].text;
+                    return;
+                }
+            }
         }
     </script>
 }

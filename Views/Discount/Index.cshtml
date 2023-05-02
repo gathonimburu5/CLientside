@@ -12,7 +12,7 @@
                 <tr class="text-uppercase">
                     <th>REF</th>
                     <th>Discount Name</th>
-                    <th>Value</th>
+                    <th>Value (%)</th>
                     <th>From-Date</th>
                     <th>Expire-Date</th>
                     <th><a class="btn btn-dark btn-sm" asp-controller="Discount" asp-action="Create"><i class="fa fa-plus-square"></i> New</a></th>
@@ -25,8 +25,8 @@
                         <td>@discount.DiscountId</td>
                         <td>@discount.DiscountName</td>
                         <td>@discount.DiscountValue</td>
-                        <td>@discount.StartDate</td>
-                        <td>@discount.ExpireDate</td>
+                        <td>@discount.StartDate.ToShortDateString()</td>
+                        <td>@discount.ExpireDate.ToShortDateString()</td>
                         <td>
                             <a class="btn btn-success btn-sm" asp-controller="Discount" asp-action="Edit" asp-route-id="@discount.DiscountId"><i class="fa fa-edit"></i></a>
                             <a class="btn btn-danger btn-sm" asp-controller="Discount" asp-action="Delete" asp-route-id="@discount.DiscountId"><i class="fa fa-trash"></i></a>
