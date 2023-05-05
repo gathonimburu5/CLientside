@@ -1,0 +1,235 @@
+@model EmployeeClient.Models.Domain.PInvoiceHeader
+@{
+    ViewData["Title"] = "Create P.Invoice";
+}
+<div class="card-header">
+    <h4>Creating Purchase Invoices</h4>
+</div>
+<div class="card-body">
+    <form asp-action="Create">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-label" style="font-weight: bold;" asp-for="InvoiceCode"></label>
+                    <input class="form-control form-control-sm" asp-for="InvoiceCode" readonly />
+                    <span class="text-danger" asp-validation-for="InvoiceCode"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" style="font-weight: bold;" asp-for="SupplierId"></label>
+                    <select class="form-select form-select-lg select2 form-control form-control-lg supplierSelectList" asp-for="SupplierId" asp-items="@ViewBag.Supplier">
+                        <option value="">Choose Supplier</option>
+                    </select> 
+                    <span class="text-danger" asp-validation-for="SupplierId"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-label" style="font-weight: bold;" asp-for="InvoiceDate"></label>
+                    <input class="form-control form-control-sm" asp-for="InvoiceDate" />
+                    <span class="text-danger" asp-validation-for="InvoiceDate"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label class="form-label" style="font-weight: bold;" asp-for="Description"></label>
+                    <textarea class="form-control form-control-sm" style="height: 30px;" asp-for="Description"></textarea>
+                    <span class="text-danger" asp-validation-for="Description"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-label" style="font-weight: bold;" asp-for="InvoiceDue"></label>
+                    <input class="form-control form-control-sm" asp-for="InvoiceDue" />
+                    <span class="text-danger" asp-validation-for="InvoiceDue"></span>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive pt-4">
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <td>Product</td>
+                        <td>Code</td>
+                        <td>Qty</td>
+                        <td>Unit Price</td>
+                        <td>Vat(%)</td>
+                        <td>Vat Amt</td>
+                        <td>Subtotal</td>
+                        <td><button type="button" id="btnAdd" onclick="AddBtn(this);" class="btn btn-primary btn-sm"><i class="fa fa-plus-square"></i></button></td>
+                    </tr>
+                </thead>
+                <tbody id="tBody">
+                    @for (int i = 0; i < Model.PInvoiceDetails.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <select class="form-control form-control-sm form-select form-select-sm select2" onchange="GettingProductCode(this, 'productCode-@i'); getUnitPrice(this, 'unitPriceId-@i'); GetProductVat(this, 'vatId-@i'); CalculateTotal();" asp-for="@Model.PInvoiceDetails[i].ProductId" asp-items="@ViewBag.Product">
+                                    <option value="">Choose Product</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.PInvoiceDetails[i].ProductId"></span>
+                            </td>
+                            <td>
+                                <input id="productCode-@i" class="form-control form-control-sm" asp-for="@Model.PInvoiceDetails[i].ProductCode" readonly />
+                                <span class="text-danger" asp-validation-for="@Model.PInvoiceDetails[i].ProductCode"></span>
+                            </td>
+                            <td>
+                                <input type="number" id="qtyValue-@i" class="form-control form-control-sm" onchange="CalculateTotal();" asp-for="@Model.PInvoiceDetails[i].QTY" />
+                                <span class="text-danger" asp-validation-for="@Model.PInvoiceDetails[i].QTY"></span>
+                            </td>
+                            <td>
+                                <input type="number" id="unitPriceId-@i" step="0.001" class="form-control form-control-sm" onchange="CalculateTotal();" asp-for="@Model.PInvoiceDetails[i].UnitPrice" />
+                                <span class="text-danger" asp-validation-for="@Model.PInvoiceDetails[i].UnitPrice"></span>
+                            </td>
+                            <td>
+                                <input type="number" id="vatId-@i" class="form-control form-control-sm" onchange="CalculateTotal();" asp-for="@Model.PInvoiceDetails[i].Vat" readonly />
+                                <span class="text-danger" asp-validation-for="@Model.PInvoiceDetails[i].Vat"></span>
+                            </td>
+                            <td>
+                                <input type="number" step="0.001" id="vatAmount-@i" class="form-control form-control-sm" onchange="CalculateTotal();" asp-for="@Model.PInvoiceDetails[i].VatAmount" />
+                                <span class="text-danger" asp-validation-for="@Model.PInvoiceDetails[i].VatAmount"></span>
+                            </td>
+                            <td>
+                                <input type="hidden" asp-for="@Model.PInvoiceDetails[i].IsDeleted"/>
+                                <input type="number" step="0.001" id="subTotal-@i" class="form-control form-control-sm" onchange="CalculateTotal();" asp-for="@Model.PInvoiceDetails[i].SubTotal" />
+                                <span class="text-danger" asp-validation-for="@Model.PInvoiceDetails[i].SubTotal"></span>
+                            </td>
+                            <td><button type="button" id="btnRemove-@i" onclick="btnDelete(this);" class="btn btn-danger btn-sm"><i class="fa fa-minus-square"></i></button></td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th class="text-end" colspan="6"><label class="form-label" asp-for="Total"></label></th>
+                        <th><input type="number" id="totalValue" onchange="CalculateTotal();" class="form-control form-control-sm" asp-for="Total"></th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="form-group pull-right pt-3">
+            <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-plus-circle"></i> Generate Invoice</button>
+            <a class="btn btn-danger btn-sm" asp-action="Index" asp-controller="HeaderInvoice"><i class="fa fa-close"></i></a>
+        </div>
+        <div class="form-group">
+            <select id="productCodeList" asp-items="@ViewBag.ProductCode" style="visibility: hidden;"></select>
+            <select id="productVatList" asp-items="@ViewBag.ProductVat" style="visibility: hidden;"></select>
+            <select id="unitPriceList" asp-items="@ViewBag.UnitPrice" style="visibility: hidden;"></select>
+        </div>
+    </form>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.supplierSelectList').select2();
+            $('.productlist').select2();
+        });
+        function CalculateTotal()
+        {
+            var total = 0;
+            var table = document.getElementById('tBody');
+            $(table).find('tr').each(function(){
+                var qty = $(this).find("td:eq(2) input[type = number]").val();
+                var unitPrice = $(this).find("td:eq(3) input[type = number]").val();
+                var vat = $(this).find("td:eq(4) input[type = number]").val();
+
+                var calculateValue = (qty * unitPrice);
+                var vatValue = (vat * calculateValue)/100;
+
+                $(this).find("td:eq(5) input[type=number]").val(vatValue);
+                var subtotal = (calculateValue + vatValue);
+                $(this).find("td:eq(6) input[type=number]").val(subtotal);
+                total = (total + subtotal);
+                $('#totalValue').val(total);
+            })
+        }
+        document.addEventListener('change', function(e){
+            if(e.target.id === 'totalValue' || e.target.id === 'qtyValue' || e.target.id === 'unitPriceId' || e.target.id === 'vatAmount' || e.target.id === 'subTotal'){
+                CalculateTotal();
+            }
+        }, false);
+        function btnDelete(btn)
+        {
+            var table = document.getElementById('tBody');
+            var row = document.getElementsByTagName('tr');
+            if(row.length == 1){
+                alert("You can not remove this Row");
+                return;
+            }
+            var btnIdx = btn.id.replaceAll('btnRemove-','');
+            var idOfDeleted = btnIdx + "__IsDeleted";
+            var hideIsDeletedId = document.querySelector("[id$= '" + idOfDeleted + "']").id;
+            document.getElementById(hideIsDeletedId).value = "true";
+            $(btn).closest('tr').hide();
+            CalculateTotal();
+        }
+        function AddBtn(btn)
+        {
+            var table = document.getElementById('tBody');
+            var row = table.getElementsByTagName('tr');
+
+            var rowOuterHtml = row[row.length - 1].outerHTML;
+
+            var lastRowIdx = row.length - 1;
+            var nextRowIdx = eval(lastRowIdx) + 1;
+
+            rowOuterHtml = rowOuterHtml.replaceAll('_' + lastRowIdx + '_', '_' + nextRowIdx + '_');
+            rowOuterHtml = rowOuterHtml.replaceAll('[' + lastRowIdx + ']', '[' + nextRowIdx + ']');
+            rowOuterHtml = rowOuterHtml.replaceAll('-' + lastRowIdx, '-' + nextRowIdx);
+
+            var newRow = table.insertRow();
+            newRow.innerHTML = rowOuterHtml;
+        }
+        function GettingProductCode(ProductId, productCode)
+        {
+            var selectList = document.getElementById('productCodeList');
+            var productCodeDetail = document.getElementById(productCode);
+            var items = selectList.options;
+            var codeValue = ProductId.value;
+            for(var i = items.length-1; i>=0; i--)
+            {
+                if(items[i].value == codeValue)
+                {
+                    productCodeDetail.value = items[i].text;
+                    return;
+                }
+            }
+        }
+        function getUnitPrice(ProductId, unitPriceId)
+        {
+            var selectUnitPrice = document.getElementById('unitPriceList');
+            var priceUnitValue = document.getElementById(unitPriceId);
+            var items = selectUnitPrice.options;
+            var priceUnit = ProductId.value;
+            for(var i = items.length - 1; i >= 0; i--)
+            {
+                if(items[i].value == priceUnit)
+                {
+                    priceUnitValue.value = items[i].text;
+                    return;
+                }
+            }
+        }
+        function GetProductVat(ProductId, vatId)
+        {
+            var selectVat = document.getElementById('productVatList');
+            var vatSelectedValue = document.getElementById(vatId);
+            var items = selectVat.options;
+            var vatValue = ProductId.value;
+            for(var i = items.length - 1; i >= 0; i--)
+            {
+                if(items[i].value == vatValue)
+                {
+                    vatSelectedValue.value = items[i].text;
+                    return;
+                }
+            }
+        }
+    </script>
+}

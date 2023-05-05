@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\css\\sweetalert.min.css",
+      "PackagePath": "staticwebassets\\css\\sweetalert.min.css"
+    },
+    {
       "Id": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
@@ -27,6 +31,10 @@
     {
       "Id": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\js\\sweetalert.min.js",
+      "PackagePath": "staticwebassets\\js\\sweetalert.min.js"
     },
     {
       "Id": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\lib\\bootstrap\\LICENSE",

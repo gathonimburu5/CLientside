@@ -88,6 +88,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/HeaderInvoice/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVhZGVySW52b2ljZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/HeaderInvoice/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVhZGVySW52b2ljZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/HeaderInvoice/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVhZGVySW52b2ljZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -142,6 +154,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Supplier/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Supplier/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/Supplier/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxpZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/_ViewImports.cshtml]

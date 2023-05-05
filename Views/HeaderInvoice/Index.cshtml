@@ -1,0 +1,69 @@
+@model IEnumerable<EmployeeClient.Models.Domain.PInvoiceHeader>
+@{
+    ViewData["Title"] = "P.Invoice List";
+}
+<div class="card-header">
+    <h4 style="font-weight: bold;">Purchase Invoice List</h4>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Ref</th>
+                    <th>Invoice Date</th>
+                    <th>Code</th>
+                    <th>Supplier</th>
+                    <th>Total</th>
+                    <th>Balance</th>
+                    <th>Credit</th>
+                    <th>Return</th>
+                    <th>Date Due</th>
+                    <th><a class="btn btn-dark btn-sm" asp-controller="HeaderInvoice" asp-action="Create"><i class="fa fa-plus-square"></i> New Invoice</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var invoice in Model)
+                {
+                    <tr>
+                        <td>@invoice.InvoiceCode</td>
+                        <td>@invoice.InvoiceDate.ToShortDateString()</td>
+                        <td>@invoice.Supplier.SupplierCode</td>
+                        <td>@invoice.Supplier.SupplierName</td>
+                        <td>@invoice.Total</td>
+                        <td>@invoice.Total</td>
+                        <td><input type="checkbox" readonly /></td>
+                        <td><input type="checkbox" readonly /></td>
+                        <td>@invoice.InvoiceDue.ToShortDateString()</td>
+                        <td>
+                            <select class="form-select form-select-sm" style="font-size: 12px; font-weight: bold;" onchange="HandlingAction(event)">
+                                <option value="">Choose Actions</option>
+                                <option value="@Url.Action("Edit", "HeaderInvoice", new { id = @invoice.PInvoiceHeaderId })">Edit Invoice</option>
+                                <option value="@Url.Action("Delete", "HeaderInvoice", new { id = @invoice.PInvoiceHeaderId })" data-invoice-code="@invoice.InvoiceCode">Delete Invoice</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        function HandlingAction(event){
+            var selectEvent = event.target;
+            var value = selectEvent.value;
+            if(value.startsWith("/HeaderInvoice/Delete/")){
+                var invoiceCode = selectEvent.options[selectEvent.selectedIndex].getAttribute("data-invoice-code")
+                var confirmMessage = window.confirm("Are you sure you want to delete this invoice " + invoiceCode + "?");
+                if(confirmMessage)
+                {
+                    window.location.href = value;
+                }
+            }else if(value.startsWith("/HeaderInvoice/Edit/")){
+                window.location.href = value;
+            }
+        }
+    </script>
+}

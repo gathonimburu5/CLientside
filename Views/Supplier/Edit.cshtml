@@ -1,0 +1,123 @@
+﻿@model EmployeeClient.Models.Domain.Supplier
+@{
+    ViewData["Title"] = "Edit Supplier";
+}
+<div class="card-header">
+    <h4>Update Supplier</h4>
+</div>
+<div class="card-body">
+    <form asp-action="Edit">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="SupplierId" />
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <div class="form-group">
+                    <label class="form-label" asp-for="SupplierCode"></label>
+                    <input class="form-control" asp-for="SupplierCode" readonly />
+                    <span class="text-danger" asp-validation-for="SupplierCode"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="SupplierName"></label>
+                    <input class="form-control form-control-sm text-uppercase" asp-for="SupplierName" />
+                    <span class="text-danger" asp-validation-for="SupplierName"></span>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="SupplierEmail"></label>
+                    <div class="input-group">
+                        <div class="input-group-text" id="emailIcon"><i class="fa fa-envelope-square"></i></div>
+                        <input class="form-control form-control-sm" asp-for="SupplierEmail" aria-describedby="emailIcon" />
+                    </div>
+                    <span class="text-danger" asp-validation-for="SupplierEmail"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="BankName"></label>
+                    <input class="form-control form-control-sm" asp-for="BankName" />
+                    <span class="text-danger" asp-validation-for="BankName"></span>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="Branch"></label>
+                    <input class="form-control form-control-sm" asp-for="Branch" />
+                    <span class="text-danger" asp-validation-for="Branch"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="AccountNumber"></label>
+                    <input class="form-control form-control-sm" asp-for="AccountNumber" />
+                    <span class="text-danger" asp-validation-for="AccountNumber"></span>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label class="form-label" style="font-weight: bold;" asp-for="CurrencyId"></label>
+                    <select class="form-control form-control-sm form-select form-select-sm select2 CurrencyData" asp-for="CurrencyId" asp-items="@ViewBag.Currency">
+                        <option value="">Select Currency</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="PostalAddress"></label>
+                    <input class="form-control form-control-sm" asp-for="PostalAddress" />
+                    <span class="text-danger" asp-validation-for="PostalAddress"></span>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="PhysicalAddress"></label>
+                    <input class="form-control form-control-sm" asp-for="PhysicalAddress" />
+                    <span class="text-danger" asp-validation-for="PhysicalAddress"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="KRAPin"></label>
+                    <input class="form-control form-control-sm text-uppercase" asp-for="KRAPin" />
+                    <span class="text-danger" asp-validation-for="KRAPin"></span>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <div class="form-group">
+                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="PhoneNumber"></label>
+                    <div class="input-group">
+                        <div class="input-group-text" id="phoneNumberIcon"><i class="fa fa-phone-square"></i></div>
+                        <input class="form-control form-control-sm" asp-for="PhoneNumber" aria-describedby="phoneNumberIcon" />
+                    </div>
+                    <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group pull-right pt-2">
+            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit Supplier</button>
+            <a class="btn btn-danger btn-sm" asp-action="Index" asp-controller="Supplier"><i class="fa fa-close"></i></a>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.CurrencyData').select2();
+        })
+    </script>
+}

@@ -47,7 +47,7 @@ namespace EmployeeClient.Controllers
             ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Value = x.ProductId.ToString(), Text = x.ProductName }).ToList();
             ViewBag.Discount = discountService.GetAllDiscountList().Select(x => new SelectListItem { Text = x.DiscountName + "-" + x.DiscountValue + "%", Value = x.DiscountId.ToString() }).ToList();
             ViewBag.DiscountValue = discountService.GetAllDiscountList().Select(x => new SelectListItem { Value = x.DiscountId.ToString(), Text = x.DiscountValue.ToString() }).ToList();
-            ViewBag.GetBuyingPrice = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductBuyingPrice.ToString(), Value = x.ProductId.ToString() }).ToList();
+            ViewBag.GetBuyingPrice = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductSellingPrice.ToString(), Value = x.ProductId.ToString() }).ToList();
             ViewBag.getVat = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductVat.ToString(), Value = x.ProductId.ToString() }).ToList();
             if (ModelState.IsValid)
             {

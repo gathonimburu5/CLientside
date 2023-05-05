@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "63SHqBCZWVkpEVd3EltP9fc+TRHjEDAWoG9YmsA09mw=",
+  "Hash": "mztF247OnYE95ZOxpm6ICllPmha6ZodZM+yRrp+htc4=",
   "Source": "EmployeeClient",
   "BasePath": "_content/EmployeeClient",
   "Mode": "Default",
@@ -153,6 +153,23 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\css\\sweetalert.min.css",
+      "SourceId": "EmployeeClient",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\",
+      "BasePath": "_content/EmployeeClient",
+      "RelativePath": "css/sweetalert.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\sweetalert.min.css"
+    },
+    {
       "Identity": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\favicon.ico",
       "SourceId": "EmployeeClient",
       "SourceType": "Discovered",
@@ -202,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\js\\sweetalert.min.js",
+      "SourceId": "EmployeeClient",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\",
+      "BasePath": "_content/EmployeeClient",
+      "RelativePath": "js/sweetalert.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\sweetalert.min.js"
     },
     {
       "Identity": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
