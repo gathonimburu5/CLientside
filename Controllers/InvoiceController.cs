@@ -32,7 +32,9 @@ namespace EmployeeClient.Controllers
             Invoice invoice = new Invoice();
             ViewBag.Customer = customerService.GetAllCustomer().Select(x => new SelectListItem { Value = x.CustomerId.ToString(), Text = x.FirstName + " " + x.LastName }).ToList();
             ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Value = x.ProductId.ToString(), Text = x.ProductName }).ToList();
-            ViewBag.Discount = discountService.GetAllDiscountList().Select(x => new SelectListItem { Text = x.DiscountName + "-" + x.DiscountValue + "%", Value = x.DiscountId.ToString() }).ToList();
+            var getDiscount = discountService.GetAllDiscountList();
+            var expiredDiscount = getDiscount.Where(x => x.ExpireDate == null || x.ExpireDate >= DateTime.Today);
+            ViewBag.Discount = discountService.GetAllDiscountList().Where(x => x.ExpireDate == null || x.ExpireDate >= DateTime.Today).Select(x => new SelectListItem { Text = x.DiscountName + "-" + x.DiscountValue + "%", Value = x.DiscountId.ToString() }).ToList();
             ViewBag.DiscountValue = discountService.GetAllDiscountList().Select(x => new SelectListItem { Value = x.DiscountId.ToString(), Text = x.DiscountValue.ToString() }).ToList();
             ViewBag.GetBuyingPrice = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductBuyingPrice.ToString(), Value = x.ProductId.ToString() }).ToList();
             ViewBag.getVat = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductVat.ToString(), Value = x.ProductId.ToString() }).ToList();
@@ -45,7 +47,7 @@ namespace EmployeeClient.Controllers
         {
             ViewBag.Customer = customerService.GetAllCustomer().Select(x => new SelectListItem { Value = x.CustomerId.ToString(), Text = x.FirstName + " " + x.LastName, Selected = x.CustomerId == invoice.CustomerId }).ToList();
             ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Value = x.ProductId.ToString(), Text = x.ProductName }).ToList();
-            ViewBag.Discount = discountService.GetAllDiscountList().Select(x => new SelectListItem { Text = x.DiscountName + "-" + x.DiscountValue + "%", Value = x.DiscountId.ToString() }).ToList();
+            ViewBag.Discount = discountService.GetAllDiscountList().Where(x => x.ExpireDate == null || x.ExpireDate >= DateTime.Today).Select(x => new SelectListItem { Text = x.DiscountName + "-" + x.DiscountValue + "%", Value = x.DiscountId.ToString() }).ToList();
             ViewBag.DiscountValue = discountService.GetAllDiscountList().Select(x => new SelectListItem { Value = x.DiscountId.ToString(), Text = x.DiscountValue.ToString() }).ToList();
             ViewBag.GetBuyingPrice = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductSellingPrice.ToString(), Value = x.ProductId.ToString() }).ToList();
             ViewBag.getVat = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductVat.ToString(), Value = x.ProductId.ToString() }).ToList();
@@ -75,7 +77,7 @@ namespace EmployeeClient.Controllers
             var invoice = invoiceService.GetInvoiceById(id);
             ViewBag.Customer = customerService.GetAllCustomer().Select(x => new SelectListItem { Value = x.CustomerId.ToString(), Text = x.FirstName + " " + x.LastName, Selected = x.CustomerId == invoice.CustomerId }).ToList();
             ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Value = x.ProductId.ToString(), Text = x.ProductName }).ToList();
-            ViewBag.Discount = discountService.GetAllDiscountList().Select(x => new SelectListItem { Text = x.DiscountName + "-" + x.DiscountValue + "%", Value = x.DiscountId.ToString() }).ToList();
+            ViewBag.Discount = discountService.GetAllDiscountList().Where(x => x.ExpireDate == null || x.ExpireDate >= DateTime.Today).Select(x => new SelectListItem { Text = x.DiscountName + "-" + x.DiscountValue + "%", Value = x.DiscountId.ToString() }).ToList();
             ViewBag.DiscountValue = discountService.GetAllDiscountList().Select(x => new SelectListItem { Value = x.DiscountId.ToString(), Text = x.DiscountValue.ToString() }).ToList();
             ViewBag.GetBuyingPrice = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductBuyingPrice.ToString(), Value = x.ProductId.ToString() }).ToList();
             ViewBag.getVat = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductVat.ToString(), Value = x.ProductId.ToString() }).ToList();
@@ -86,7 +88,7 @@ namespace EmployeeClient.Controllers
         {
             ViewBag.Customer = customerService.GetAllCustomer().Select(x => new SelectListItem { Value = x.CustomerId.ToString(), Text = x.FirstName + " " + x.LastName, Selected = x.CustomerId == invoice.CustomerId }).ToList();
             ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Value = x.ProductId.ToString(), Text = x.ProductName }).ToList();
-            ViewBag.Discount = discountService.GetAllDiscountList().Select(x => new SelectListItem { Text = x.DiscountName + "-" + x.DiscountValue + "%", Value = x.DiscountId.ToString() }).ToList();
+            ViewBag.Discount = discountService.GetAllDiscountList().Where(x => x.ExpireDate == null || x.ExpireDate >= DateTime.Today).Select(x => new SelectListItem { Text = x.DiscountName + "-" + x.DiscountValue + "%", Value = x.DiscountId.ToString() }).ToList();
             ViewBag.DiscountValue = discountService.GetAllDiscountList().Select(x => new SelectListItem { Value = x.DiscountId.ToString(), Text = x.DiscountValue.ToString() }).ToList();
             ViewBag.GetBuyingPrice = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductBuyingPrice.ToString(), Value = x.ProductId.ToString() }).ToList();
             ViewBag.getVat = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductVat.ToString(), Value = x.ProductId.ToString() }).ToList();

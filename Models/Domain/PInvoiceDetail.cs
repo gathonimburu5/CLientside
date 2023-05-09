@@ -19,9 +19,7 @@ namespace EmployeeClient.Models.Domain
 		[ForeignKey("PInvoiceHeader")]
 		public int PInvoiceHeaderId { get; set; }
 		public virtual PInvoiceHeader? PInvoiceHeader { get; set; }
-		[NotMapped]
 		public int Vat { get; set; }
-		[NotMapped]
 		public string ProductCode { get; set; } = string.Empty;
 		[NotMapped]
 		public bool IsDeleted { get; set; } = false;

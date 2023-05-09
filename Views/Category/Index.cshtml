@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EmployeeClient.Models.Domain.Category>
+﻿@using EmployeeClient.Models.Domain;
+@model IEnumerable<Category>
 @{
     ViewData["Title"] = "Category List";
 }
@@ -31,3 +32,4 @@
         </table>
     </div>
 </div>
+@await Html.PartialAsync("_CreateCategory", new Category())

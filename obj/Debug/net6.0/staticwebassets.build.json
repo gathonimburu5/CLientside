@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mztF247OnYE95ZOxpm6ICllPmha6ZodZM+yRrp+htc4=",
+  "Hash": "CK4SuPGkzW9RBRawqVRgn40IZyJ1O4n3J37//7lyegk=",
   "Source": "EmployeeClient",
   "BasePath": "_content/EmployeeClient",
   "Mode": "Default",
@@ -1188,6 +1188,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Identity": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\lib\\jquery\\dist\\popover.js",
+      "SourceId": "EmployeeClient",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\",
+      "BasePath": "_content/EmployeeClient",
+      "RelativePath": "lib/jquery/dist/popover.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\popover.js"
+    },
+    {
+      "Identity": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\lib\\jquery\\dist\\select2.js",
+      "SourceId": "EmployeeClient",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\",
+      "BasePath": "_content/EmployeeClient",
+      "RelativePath": "lib/jquery/dist/select2.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\select2.js"
     },
     {
       "Identity": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\lib\\jquery\\LICENSE.txt",

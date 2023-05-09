@@ -265,6 +265,14 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\lib\\jquery\\dist\\popover.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\popover.js"
+    },
+    {
+      "Id": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\lib\\jquery\\dist\\select2.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\select2.js"
+    },
+    {
       "Id": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\template\\css\\maps\\horizontal-layout-dark\\style.css.map",
       "PackagePath": "staticwebassets\\template\\css\\maps\\horizontal-layout-dark\\style.css.map"
     },

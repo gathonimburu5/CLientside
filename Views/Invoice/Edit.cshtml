@@ -49,8 +49,8 @@
                 </div>
             </div>
         </div>
-        <div class="table-responsive">
-            <table class="table table-hover">
+        <div class="table-responsive pt-4">
+            <table class="table table-hover table-sm table-bordered">
                 <thead>
                     <tr>
                         <th>Product</th>
@@ -149,7 +149,8 @@
             var idOfDeleted = btnIdx + "__IsDeleted";
             var hideIsDeletedId = document.querySelector("[id$= '" + idOfDeleted + "']").id;
             document.getElementById(hideIsDeletedId).value = "true";
-            $(btn).closest('tr').hide();
+            $(btn).parents('tr').hide();
+            //$(btn).closest('tr').hide();
             CalculateSubtotal();
         }
 
@@ -173,7 +174,7 @@
         function CalculateSubtotal(){
             var total = 0;
             var tbody = document.getElementById('tbody');
-            $(tbody).find('tr').each(function(){
+            $(tbody).find('tr:visible').each(function(){
                 var qty = $(this).find("td:eq(1) input[type=number]").val();
                 var unitPrice = $(this).find("td:eq(2) input[type=number]").val();
                 var vat = $(this).find("td:eq(3) input[type=number]").val();
@@ -187,8 +188,8 @@
                 $(this).find("td:eq(6) input[type=number]").val(subTotal);
 
                 total = total + subTotal;
-                $('#totalValue').val(total);
             });
+            $('#totalValue').val(total);
         }
         document.addEventListener('change', function(e){
             if(e.target.id == 'totalValue'){

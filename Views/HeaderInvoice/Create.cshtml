@@ -19,9 +19,9 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label" style="font-weight: bold;" asp-for="SupplierId"></label>
-                    <select class="form-select form-select-lg select2 form-control form-control-lg supplierSelectList" asp-for="SupplierId" asp-items="@ViewBag.Supplier">
+                    <select class="form-select form-select-lg select2 form-control form-control-lg text-uppercase supplierSelectList" asp-for="SupplierId" asp-items="@ViewBag.Supplier">
                         <option value="">Choose Supplier</option>
-                    </select> 
+                    </select>
                     <span class="text-danger" asp-validation-for="SupplierId"></span>
                 </div>
             </div>
@@ -90,12 +90,12 @@
                                 <span class="text-danger" asp-validation-for="@Model.PInvoiceDetails[i].Vat"></span>
                             </td>
                             <td>
-                                <input type="number" step="0.001" id="vatAmount-@i" class="form-control form-control-sm" onchange="CalculateTotal();" asp-for="@Model.PInvoiceDetails[i].VatAmount" />
+                                <input readonly type="number" step="0.001" id="vatAmount-@i" class="form-control form-control-sm" onchange="CalculateTotal();" asp-for="@Model.PInvoiceDetails[i].VatAmount" />
                                 <span class="text-danger" asp-validation-for="@Model.PInvoiceDetails[i].VatAmount"></span>
                             </td>
                             <td>
                                 <input type="hidden" asp-for="@Model.PInvoiceDetails[i].IsDeleted"/>
-                                <input type="number" step="0.001" id="subTotal-@i" class="form-control form-control-sm" onchange="CalculateTotal();" asp-for="@Model.PInvoiceDetails[i].SubTotal" />
+                                <input readonly type="number" step="0.001" id="subTotal-@i" class="form-control form-control-sm" onchange="CalculateTotal();" asp-for="@Model.PInvoiceDetails[i].SubTotal" />
                                 <span class="text-danger" asp-validation-for="@Model.PInvoiceDetails[i].SubTotal"></span>
                             </td>
                             <td><button type="button" id="btnRemove-@i" onclick="btnDelete(this);" class="btn btn-danger btn-sm"><i class="fa fa-minus-square"></i></button></td>
@@ -105,7 +105,7 @@
                 <tfoot>
                     <tr>
                         <th class="text-end" colspan="6"><label class="form-label" asp-for="Total"></label></th>
-                        <th><input type="number" id="totalValue" onchange="CalculateTotal();" class="form-control form-control-sm" asp-for="Total"></th>
+                        <th><input readonly type="number" id="totalValue" onchange="CalculateTotal();" class="form-control form-control-sm" asp-for="Total"></th>
                         <th></th>
                     </tr>
                 </tfoot>
@@ -134,7 +134,7 @@
         {
             var total = 0;
             var table = document.getElementById('tBody');
-            $(table).find('tr').each(function(){
+            $(table).find('tr:visible').each(function(){
                 var qty = $(this).find("td:eq(2) input[type = number]").val();
                 var unitPrice = $(this).find("td:eq(3) input[type = number]").val();
                 var vat = $(this).find("td:eq(4) input[type = number]").val();
@@ -146,8 +146,8 @@
                 var subtotal = (calculateValue + vatValue);
                 $(this).find("td:eq(6) input[type=number]").val(subtotal);
                 total = (total + subtotal);
-                $('#totalValue').val(total);
-            })
+            });
+            $('#totalValue').val(total);
         }
         document.addEventListener('change', function(e){
             if(e.target.id === 'totalValue' || e.target.id === 'qtyValue' || e.target.id === 'unitPriceId' || e.target.id === 'vatAmount' || e.target.id === 'subTotal'){
@@ -185,6 +185,7 @@
 
             var newRow = table.insertRow();
             newRow.innerHTML = rowOuterHtml;
+            CalculateTotal();
         }
         function GettingProductCode(ProductId, productCode)
         {

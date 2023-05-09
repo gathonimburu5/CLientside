@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EmployeeClient.Models.Domain.Supplier>
+﻿@using EmployeeClient.Models.Domain;
+@model IEnumerable<Supplier>
 @{
     ViewData["Title"] = "Supplier List";
 }
@@ -19,7 +20,7 @@
                     <th>KRA</th>
                     <th>Phone</th>
                     <th>Currency</th>
-                    <th><a class="btn btn-dark btn-sm" asp-action="Create"><i class="fa fa-plus-square-o"></i> New Supplier</a></th>
+                    <th><a class="btn btn-dark btn-sm" asp-controller="Supplier" asp-action="Create"><i class="fa fa-plus-square"></i> New Supplier</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -50,6 +51,8 @@
         </table>
     </div>
 </div>
+@await Html.PartialAsync("_CreateSupplier", new Supplier())
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
@@ -73,3 +76,4 @@
         }
     </script>
 }
+
