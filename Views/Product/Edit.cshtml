@@ -20,20 +20,20 @@
                         <img src="~/Uploads/download (1).png" class="img-fluid pb-2" style="width: 200px; height: 200px" id="imgPreview" />
                     }else{
                         <img src="https://localhost:7243/api/Product/Photo/@Model.ProductId" alt="Product Image" class="img-fluid pb-2" style="width: 200px; height: 200px" id="imgPreview" />
-                    }                    
+                    }
                     <input id="uploadProductImage" class="position-absolute invisible" onchange="Previewing(event);" asp-for="ProductPhoto" />
                     <label class="btn btn-secondary btn-sm" for="uploadProductImage" style="width: 200px;">Upload Product Photo</label>
                     <span class="text-danger" asp-validation-for="ProductPhoto"></span>
                 </div>
             </div>
-            <div class="col-md-10 col-sm-10 col-lg-10">                
+            <div class="col-md-10 col-sm-10 col-lg-10">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="ProductName" class="control-label"></label>
                             <div class="input-group">
                                 <div class="input-group-text" id="productIcon"><i class="fa fa-product-hunt"></i></div>
-                                <input asp-for="ProductName" class="form-control form-control-sm" aria-describedby="productIcon" />
+                                <input asp-for="ProductName" class="form-control form-control-sm" aria-describedby="productIcon" oninput="this.value = this.value.toUpperCase()" />
                             </div>
                             <span asp-validation-for="ProductName" class="text-danger"></span>
                         </div>
@@ -102,7 +102,7 @@
                             <label asp-for="ProductSupplier" class="control-label"></label>
                             <div class="input-group">
                                 <div class="input-group-text" id="supplierUserIcon"><i class="fa fa-user"></i></div>
-                                <input asp-for="ProductSupplier" class="form-control form-control-sm" aria-describedby="supplierUserIcon" />
+                                <input asp-for="ProductSupplier" class="form-control form-control-sm" aria-describedby="supplierUserIcon" oninput="this.value = this.value.toUpperCase()" />
                             </div>
                             <span asp-validation-for="ProductSupplier" class="text-danger"></span>
                         </div>
@@ -121,7 +121,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label asp-for="ProductDescription" class="control-label"></label>
-                            <textarea asp-for="ProductDescription" class="form-control form-control-sm"></textarea>
+                            <textarea asp-for="ProductDescription" class="form-control form-control-sm" oninput="this.value = this.value.toUpperCase()"></textarea>
                             <span asp-validation-for="ProductDescription" class="text-danger"></span>
                         </div>
                     </div>

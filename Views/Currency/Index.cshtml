@@ -1,0 +1,53 @@
+﻿@using EmployeeClient.Models.Domain;
+@model IEnumerable<Currency>
+@{
+    ViewData["Title"] = "Currency List";
+    ViewData["Header"] = "All Currency List";
+}
+<div class="table-responsive">
+    <table class="table dataTable">
+        <thead>
+            <tr>
+                <th>REF</th>
+                <th>Name</th>
+                <th>ABREV</th>
+                <th>Rate</th>
+                <th>Country</th>
+                <th><a class="btn btn-primary btn-sm" asp-controller="Currency" asp-action="Create"><i class="fa fa-plus-circle"></i> New Currency</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var currency in Model)
+            {
+                <tr>
+                    <td>@currency.CurrencyId</td>
+                    <td>@currency.CurrencyName</td>
+                    <td>@currency.Abbreviation</td>
+                    <td>@currency.ExchangeRate</td>
+                    <td>@currency.CountryName</td>
+                    <td>
+                        <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px;" onchange="ActionChange(event)">
+                            <option value="">Choose Action</option>
+                            <option value="@Url.Action("Edit","Currency", new { id = currency.CurrencyId })">Edit Currency</option>
+                        </select>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@await Html.PartialAsync("_CreateCurrency", new Currency())
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        function ActionChange(event) {
+            var selectEvent = event.target;
+            var value = selectEvent.value;
+            if (value.startsWith("/Currency/Edit/")) {
+                window.location.href = value;
+            }
+        }
+    </script>
+}

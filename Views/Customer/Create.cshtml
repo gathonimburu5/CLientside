@@ -13,14 +13,14 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="FirstName" class="control-label"></label>
-                    <input asp-for="FirstName" class="form-control form-control-sm" />
+                    <input asp-for="FirstName" class="form-control form-control-sm" oninput="this.value = this.value.toUpperCase()" />
                     <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="LastName" class="control-label"></label>
-                    <input asp-for="LastName" class="form-control form-control-sm" />
+                    <input asp-for="LastName" class="form-control form-control-sm" oninput="this.value = this.value.toUpperCase()" />
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     <label asp-for="Email" class="control-label"></label>
                     <div class="input-group">
                         <div class="input-group-text" id="EmailIcons"><i class="fa fa-envelope"></i></div>
-                        <input asp-for="Email" class="form-control form-control-sm" aria-describedby="EmailIcons" />
+                        <input asp-for="Email" class="form-control form-control-sm" aria-describedby="EmailIcons" oninput="this.value = this.value.toLowerCase()" />
                     </div>
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
@@ -68,14 +68,14 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="PhysicalAddress" class="control-label"></label>
-                    <input asp-for="PhysicalAddress" class="form-control form-control-sm" />
+                    <input asp-for="PhysicalAddress" class="form-control form-control-sm" oninput="this.value = this.value.toUpperCase()" />
                     <span asp-validation-for="PhysicalAddress" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="VatPin" class="control-label"></label>
-                    <input asp-for="VatPin" class="form-control form-control-sm" />
+                    <input asp-for="VatPin" class="form-control form-control-sm" oninput="this.value = this.value.toUpperCase()" />
                     <span asp-validation-for="VatPin" class="text-danger"></span>
                 </div>
             </div>
@@ -91,7 +91,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="CreditTerms" class="control-label"></label>
-                    <input asp-for="CreditTerms" class="form-control form-control-sm" />
+                    <input asp-for="CreditTerms" class="form-control form-control-sm" oninput="this.value = this.value.toUpperCase()" />
                     <span asp-validation-for="CreditTerms" class="text-danger"></span>
                 </div>
             </div>

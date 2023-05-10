@@ -25,7 +25,7 @@
                             <label asp-for="ProductName" class="control-label"></label>
                             <div class="input-group">
                                 <div class="input-group-text" id="productIcon"><i class="fa fa-product-hunt"></i></div>
-                                <input asp-for="ProductName" class="form-control form-control-sm" aria-describedby="productIcon" />
+                                <input asp-for="ProductName" class="form-control form-control-sm" aria-describedby="productIcon" oninput="this.value = this.value.toUpperCase()" />
                             </div>
                             <span asp-validation-for="ProductName" class="text-danger"></span>
                         </div>
@@ -94,7 +94,7 @@
                             <label asp-for="ProductSupplier" class="control-label"></label>
                             <div class="input-group">
                                 <div class="input-group-text" id="supplierUserIcon"><i class="fa fa-user"></i></div>
-                                <input asp-for="ProductSupplier" class="form-control form-control-sm" aria-describedby="supplierUserIcon" />
+                                <input asp-for="ProductSupplier" class="form-control form-control-sm" aria-describedby="supplierUserIcon" oninput="this.value = this.value.toUpperCase()" />
                             </div>
                             <span asp-validation-for="ProductSupplier" class="text-danger"></span>
                         </div>
@@ -113,7 +113,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label asp-for="ProductDescription" class="control-label"></label>
-                            <textarea asp-for="ProductDescription" class="form-control form-control-sm"></textarea>
+                            <textarea asp-for="ProductDescription" class="form-control form-control-sm" oninput="this.value = this.value.toUpperCase()"></textarea>
                             <span asp-validation-for="ProductDescription" class="text-danger"></span>
                         </div>
                     </div>

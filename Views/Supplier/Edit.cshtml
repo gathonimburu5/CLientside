@@ -22,7 +22,7 @@
             <div class="col-md-6 col-sm-6 col-lg-6">
                 <div class="form-group">
                     <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="SupplierName"></label>
-                    <input class="form-control form-control-sm text-uppercase" asp-for="SupplierName" />
+                    <input class="form-control form-control-sm text-uppercase" asp-for="SupplierName" oninput="this.value = this.value.toUpperCase()" />
                     <span class="text-danger" asp-validation-for="SupplierName"></span>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="SupplierEmail"></label>
                     <div class="input-group">
                         <div class="input-group-text" id="emailIcon"><i class="fa fa-envelope-square"></i></div>
-                        <input class="form-control form-control-sm" asp-for="SupplierEmail" aria-describedby="emailIcon" />
+                        <input class="form-control form-control-sm" asp-for="SupplierEmail" aria-describedby="emailIcon" oninput="this.value = this.value.toLowerCase()" />
                     </div>
                     <span class="text-danger" asp-validation-for="SupplierEmail"></span>
                 </div>
@@ -41,14 +41,14 @@
             <div class="col-md-6 col-sm-6 col-lg-6">
                 <div class="form-group">
                     <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="BankName"></label>
-                    <input class="form-control form-control-sm" asp-for="BankName" />
+                    <input class="form-control form-control-sm" asp-for="BankName" oninput="this.value = this.value.toUpperCase()" />
                     <span class="text-danger" asp-validation-for="BankName"></span>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-lg-6">
                 <div class="form-group">
                     <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="Branch"></label>
-                    <input class="form-control form-control-sm" asp-for="Branch" />
+                    <input class="form-control form-control-sm" asp-for="Branch" oninput="this.value = this.value.toUpperCase()" />
                     <span class="text-danger" asp-validation-for="Branch"></span>
                 </div>
             </div>
@@ -81,7 +81,7 @@
             <div class="col-md-6 col-sm-6 col-lg-6">
                 <div class="form-group">
                     <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="PhysicalAddress"></label>
-                    <input class="form-control form-control-sm" asp-for="PhysicalAddress" />
+                    <input class="form-control form-control-sm" asp-for="PhysicalAddress" oninput="this.value = this.value.toUpperCase()"/>
                     <span class="text-danger" asp-validation-for="PhysicalAddress"></span>
                 </div>
             </div>
@@ -90,7 +90,7 @@
             <div class="col-md-6 col-sm-6 col-lg-6">
                 <div class="form-group">
                     <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="KRAPin"></label>
-                    <input class="form-control form-control-sm text-uppercase" asp-for="KRAPin" />
+                    <input class="form-control form-control-sm text-uppercase" asp-for="KRAPin" oninput="this.value = this.value.toUpperCase()"/>
                     <span class="text-danger" asp-validation-for="KRAPin"></span>
                 </div>
             </div>

@@ -29,6 +29,7 @@ namespace EmployeeClient.Controllers
         public IActionResult Create()
         {
             Category category = new Category();
+            category.Status = "In-Active";
             return View(category);
         }
         [HttpPost]

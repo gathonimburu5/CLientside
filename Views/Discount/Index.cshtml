@@ -15,7 +15,7 @@
                     <th>Value (%)</th>
                     <th>From-Date</th>
                     <th>Expire-Date</th>
-                    <th><a class="btn btn-dark btn-sm" asp-controller="Discount" asp-action="Create"><i class="fa fa-plus-square"></i> New</a></th>
+                    <th><a class="btn btn-dark btn-sm" asp-controller="Discount" asp-action="Create"><i class="fa fa-plus-square"></i> New Currency</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,8 +28,10 @@
                         <td>@discount.StartDate.ToShortDateString()</td>
                         <td>@discount.ExpireDate.ToShortDateString()</td>
                         <td>
-                            <a class="btn btn-success btn-sm" asp-controller="Discount" asp-action="Edit" asp-route-id="@discount.DiscountId"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-danger btn-sm" onclick="return DeleteConfirmation();" asp-controller="Discount" asp-action="Delete" asp-route-id="@discount.DiscountId"><i class="fa fa-trash"></i></a>
+                            <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px;" onchange="ActionChange(event)">
+                                <option value="">Choose Action</option>
+                                <option value="@Url.Action("Edit","Discount", new { id = discount.DiscountId })">Edit Discount</option>
+                            </select>
                         </td>
                     </tr>
                 }
@@ -38,28 +40,14 @@
     </div>
 </div>
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script type="text/javascript">
-        function DeleteConfirmation() {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
-                }
-            })
+        function ActionChange(event){
+            var selectEvent = event.target;
+            var value = selectEvent.value;
+            if(value.startsWith("/Discount/Edit/")){
+                window.location.href = value;
+            }
         }
     </script>
 }
