@@ -3,7 +3,7 @@
     ViewData["Title"] = "Create Category";
 }
 <div class="card-header">
-    <h5>Create category</h5>
+    <h3 style="font-family: monospace; font-weight: bold;">Create category</h3>
 </div>
 <div class="card-body">
     <div class="col-md-8">
@@ -16,7 +16,7 @@
             </div>
             <input type="hidden" asp-for="Status" />
             <div class="form-group pt-2">
-                <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-plus-square"></i> Create Category</button>
+                <button type="submit" style="font-family: monospace; font-weight: bold;" class="btn btn-primary btn-lg"><i class="fa fa-plus-square"></i> Create Category</button>
                 <a class="btn btn-danger btn-lg" asp-controller="Category" asp-action="Index"><i class="fa fa-close"></i></a>
             </div>
         </form>

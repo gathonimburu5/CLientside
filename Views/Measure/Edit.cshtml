@@ -4,21 +4,26 @@
     ViewData["Title"] = "Edit Units";
 }
 <div class="card-header">
-    <h5>Updating Measure Units</h5>
+    <h4 style="font-family: monospace; font-weight: bold;">Updating Measure Units</h4>
 </div>
 <div class="card-body">
     <div class="col-md-8">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="MeasureUnitId" class="control-label"></label>
-                <input asp-for="MeasureUnitId" class="form-control" readonly/>
-                <span asp-validation-for="MeasureUnitId" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="MeasureUnitId" />
             <div class="form-group">
                 <label asp-for="MeasureUnitName" class="control-label"></label>
                 <input asp-for="MeasureUnitName" class="form-control" />
                 <span asp-validation-for="MeasureUnitName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Status"></label>
+                <select class="form-control form-control-sm form-select form-select-sm select2 statusSelect" asp-for="Status">
+                    <option>Choose Status</option>
+                    <option>Active</option>
+                    <option>In-Active</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Status"></span>
             </div>
             <div class="form-group pt-2">
                 <a class="btn btn-danger btn-lg" asp-controller="Measure" asp-action="Index"><i class="fa fa-close"></i> Close</a>

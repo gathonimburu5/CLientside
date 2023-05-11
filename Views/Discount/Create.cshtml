@@ -3,7 +3,7 @@
     ViewData["Title"] = "Create Discount";
 }
 <div class="card-header">
-    <h3>Adding Discount</h3>
+    <h3 style="font-family: monospace; font-weight: bold;">Adding Discount</h3>
 </div>
 <div class="card-body">
     <form asp-controller="Discount" asp-action="Create">
@@ -35,6 +35,7 @@
                 </div>
                 <span class="text-danger" asp-validation-for="ExpireDate"></span>
             </div>
+            <input type="hidden" asp-for="Status" />
             <div class="form-group pt-2 pull-right">
                 <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-plus-circle"></i> Submit Discount</button>
                 <a class="btn btn-danger btn-lg" asp-controller="Discount" asp-action="Index"><i class="fa fa-close"></i></a>

@@ -2,8 +2,16 @@
 @model IEnumerable<Currency>
 @{
     ViewData["Title"] = "Currency List";
-    ViewData["Header"] = "All Currency List";
 }
+<div class="card-header">
+    <div class="row">
+        <div class="col-md-2"><h4 style="font-family: monospace; font-weight: bold;">All Currency List</h4></div>
+        <div class="col-md-8"></div>
+        <div class="col-md-2">
+            <div class="form-group pull-right"><a class="btn btn-primary btn-sm" style="font-family: monospace; font-weight: bold;" asp-controller="Currency" asp-action="Create"><i class="fa fa-plus-circle"></i> New Currency</a></div>
+        </div>
+    </div>
+</div>
 <div class="table-responsive">
     <table class="table dataTable">
         <thead>
@@ -13,7 +21,8 @@
                 <th>ABREV</th>
                 <th>Rate</th>
                 <th>Country</th>
-                <th><a class="btn btn-primary btn-sm" asp-controller="Currency" asp-action="Create"><i class="fa fa-plus-circle"></i> New Currency</a></th>
+                <th>Status</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +34,14 @@
                     <td>@currency.Abbreviation</td>
                     <td>@currency.ExchangeRate</td>
                     <td>@currency.CountryName</td>
+                    @if (currency.Status == "Active")
+                    {
+                        <td><span class="text-success"><i class="fa fa-check-circle-o" aria-hidden="true"> @currency.Status</i></span></td>
+                    }
+                    else
+                    {
+                        <td><span class="text-danger"><i class="fa fa-check-circle-o" aria-hidden="true"> @currency.Status</i></span></td>
+                    }
                     <td>
                         <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px;" onchange="ActionChange(event)">
                             <option value="">Choose Action</option>

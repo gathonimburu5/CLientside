@@ -24,6 +24,7 @@ builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 builder.Services.AddScoped<IDiscountService, DiscountService>();
 builder.Services.AddScoped<ISupplierService, SupplierService>();
 builder.Services.AddScoped<IHeaderInvoiceService, HeaderInvoiceService>();
+builder.Services.AddScoped<IReceivedService, ReceivedService>();
 
 var app = builder.Build();
 

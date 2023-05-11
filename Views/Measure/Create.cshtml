@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create Unit";
 }
 <div class="card-header">
-    <h5>Creating Measure Units</h5>
+    <h4 style="font-family: monospace; font-weight: bold;">Creating Measure Units</h4>
 </div>
 <div class="card-body">
     <div class="col-md-8">
@@ -15,6 +15,7 @@
                 <input asp-for="MeasureUnitName" class="form-control" />
                 <span asp-validation-for="MeasureUnitName" class="text-danger"></span>
             </div>
+            <input type="hidden" asp-for="Status" />
             <div class="form-group pt-2">
                 <a class="btn btn-danger btn-lg" asp-controller="Measure" asp-action="Index"><i class="fa fa-close"></i> Close</a>
                 <button class="btn btn-dark btn-lg" type="submit"><i class="fa fa-plus"></i> Create Unit</button>

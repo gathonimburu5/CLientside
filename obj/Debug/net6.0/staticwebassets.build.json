@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PodYhRnF0JWT74eOb1Dtigm6oKgVW9FaNGw9aRrsvxk=",
+  "Hash": "nTz30W/CeXaax2EI31GXg9x/MiwaekEOUY9pXgf4vhs=",
   "Source": "EmployeeClient",
   "BasePath": "_content/EmployeeClient",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\card.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\assets\\img\\face15.jpg",
+      "SourceId": "EmployeeClient",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\",
+      "BasePath": "_content/EmployeeClient",
+      "RelativePath": "assets/img/face15.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\face15.jpg"
     },
     {
       "Identity": "C:\\Users\\Ngenx\\Desktop\\Asp_Projects\\EmployeeClient\\EmployeeClient\\wwwroot\\assets\\img\\favicon.png",

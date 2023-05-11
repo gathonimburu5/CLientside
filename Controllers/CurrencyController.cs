@@ -23,6 +23,7 @@ namespace EmployeeClient.Controllers
         public IActionResult Create()
         {
             Currency currency = new Currency();
+            currency.Status = "In-Active";
             return View(currency);
         }
         [HttpPost]

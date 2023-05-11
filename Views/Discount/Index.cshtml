@@ -3,7 +3,13 @@
     ViewData["Title"] = "Discount List";
 }
 <div class="card-header">
-    <h3 style="font-weight: bold;">All Discount List.</h3>
+    <div class="row">
+        <div class="col-md-2"><h4 style="font-family: monospace; font-weight: bold;">All Discount List</h4></div>
+        <div class="col-md-8"></div>
+        <div class="col-md-2">
+            <div class="form-group pull-right"><a class="btn btn-dark btn-sm" style="font-family: monospace; font-weight: bold;" asp-controller="Discount" asp-action="Create"><i class="fa fa-plus-square"></i> New Currency</a></div>
+        </div>
+    </div>
 </div>
 <div class="card-body">
     <div class="table-responsive">
@@ -15,7 +21,8 @@
                     <th>Value (%)</th>
                     <th>From-Date</th>
                     <th>Expire-Date</th>
-                    <th><a class="btn btn-dark btn-sm" asp-controller="Discount" asp-action="Create"><i class="fa fa-plus-square"></i> New Currency</a></th>
+                    <th>Status</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +34,14 @@
                         <td>@discount.DiscountValue</td>
                         <td>@discount.StartDate.ToShortDateString()</td>
                         <td>@discount.ExpireDate.ToShortDateString()</td>
+                        @if (discount.Status == "Active")
+                        {
+                            <td><span class="text-success"><i class="fa fa-check-circle-o" aria-hidden="true"> @discount.Status</i></span></td>
+                        }
+                        else
+                        {
+                            <td><span class="text-danger"><i class="fa fa-check-circle-o" aria-hidden="true"> @discount.Status</i></span></td>
+                        }
                         <td>
                             <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px;" onchange="ActionChange(event)">
                                 <option value="">Choose Action</option>

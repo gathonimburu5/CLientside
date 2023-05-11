@@ -4,7 +4,7 @@
     ViewData["Title"] = "Category List";
 }
 <div class="card-header">
-    <h5>Category List</h5>
+    <h4 style="font-family: monospace; font-weight: bold;">Category List</h4>
 </div>
 <div class="card-body">
     <div class="table-responsive">
@@ -14,7 +14,7 @@
                     <th>Ref</th>
                     <th>Category Name</th>
                     <th>Status</th>
-                    <th><a class="btn btn-dark btn-sm" asp-controller="Category" asp-action="Create"><i class="fa fa-plus"></i> New Category</a></th>
+                    <th><a class="btn btn-dark btn-sm" style="font-family: monospace; font-weight: bold;" asp-controller="Category" asp-action="Create"><i class="fa fa-plus-square"></i> New Category</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +31,7 @@
                         {
                             <td><span class="text-danger"><i class="fa fa-check-circle-o" aria-hidden="true"> @category.Status</i></span></td>
                         }
-                            <td>
+                         <td>
                             <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px;" onchange="ActionChange(event)">
                                 <option value="">Choose Action</option>
                                 <option value="@Url.Action("Update","Category", new { id = category.CategoryId })">Edit Category</option>

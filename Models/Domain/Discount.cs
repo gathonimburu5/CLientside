@@ -16,5 +16,6 @@ namespace EmployeeClient.Models.Domain
         [DisplayFormat(DataFormatString = "{0:d}")]
         [Display(Name = "Expire Date")]
         public DateTime ExpireDate { get; set; } = DateTime.UtcNow.AddDays(2);
+        public string Status { get; set; } = string.Empty;
     }
 }
