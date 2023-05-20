@@ -11,10 +11,10 @@
         <table class="table dataTable table-hover">
             <thead>
                 <tr>
-                    <th>REF</th>
-                    <th>Measure Unit</th>
-                    <th>Status</th>
-                    <th><a class="btn btn-dark btn-sm" style="font-family: monospace; font-weight: bold;" asp-controller="Measure" asp-action="Create"><i class="fa fa-plus"></i> New Unit</a></th>
+                    <th class="text-uppercase" style="font-family: monospace; font-weight: bold;">REF</th>
+                    <th class="text-uppercase" style="font-family: monospace; font-weight: bold;">Measure Unit</th>
+                    <th class="text-uppercase" style="font-family: monospace; font-weight: bold;">Status</th>
+                    <th><a class="btn btn-dark btn-sm" style="font-family: monospace; font-weight: bold;" asp-controller="Measure" asp-action="Create"><i class="fa fa-plus-circle"></i> Unit</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -22,7 +22,7 @@
                 {
                     <tr>
                         <td>@measure.MeasureUnitId</td>
-                        <td>@measure.MeasureUnitName</td>
+                        <td style="font-family: monospace; ">@measure.MeasureUnitName</td>
                         @if (measure.Status == "Active")
                         {
                             <td><span class="text-success"><i class="fa fa-check-circle-o" aria-hidden="true"> @measure.Status</i></span></td>
@@ -32,8 +32,8 @@
                             <td><span class="text-danger"><i class="fa fa-check-circle-o" aria-hidden="true"> @measure.Status</i></span></td>
                         }
                         <td>
-                            <a class="btn btn-success btn-sm" asp-controller="Measure" asp-action="Edit" asp-route-id="@measure.MeasureUnitId">Edit Unit</a>
-                            <a class="btn btn-danger btn-sm" asp-controller="Measure" asp-action="Delete" asp-route-id="@measure.MeasureUnitId">Delete Unit</a>
+                            <a class="btn btn-success btn-sm" asp-controller="Measure" asp-action="Edit" asp-route-id="@measure.MeasureUnitId"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Measure" asp-action="Delete" asp-route-id="@measure.MeasureUnitId"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
                 }

@@ -108,12 +108,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/GoodReceived/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR29vZFJlY2VpdmVkXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/GoodReceived/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR29vZFJlY2VpdmVkXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/GoodReceived/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR29vZFJlY2VpdmVkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/HeaderInvoice/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVhZGVySW52b2ljZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/HeaderInvoice/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVhZGVySW52b2ljZVxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/HeaderInvoice/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVhZGVySW52b2ljZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/HeaderInvoice/GoodReceived.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVhZGVySW52b2ljZVxHb29kUmVjZWl2ZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Ngenx/Desktop/Asp_Projects/EmployeeClient/EmployeeClient/Views/HeaderInvoice/Index.cshtml]

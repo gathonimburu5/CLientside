@@ -1,0 +1,138 @@
+﻿@model EmployeeClient.Models.Domain.GoodReceivedHeader
+@{
+    ViewData["Title"] = "Goods Received";
+}
+<div class="card-header"><h4 style="font-family: monospace; font-weight: bold;">Creating Goods Received</h4></div>
+<div class="card-body">
+    <form asp-controller="HeaderInvoice" asp-action="GoodReceived">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="PInvoiceHeaderId" />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="SupplierName" class="form-label text-uppercase" style="font-family: monospace; font-weight: bold;">Supplier Name</label>
+                    <input asp-for="@Model.SupplierName" class="form-control" style="font-family: monospace; font-weight: bold;" />
+                    <span class="text-danger" asp-validation-for="SupplierName"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="InvoiceCode" class="form-label text-uppercase" style="font-family: monospace; font-weight: bold;"></label>
+                    <input readonly asp-for="@Model.PInvoiceHeader.InvoiceCode" class="form-control form-control-sm" id="invoiceCode" />
+                    <span class="text-danger" asp-validation-for="InvoiceCode"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="DateReceived" class="form-label text-uppercase" style="font-family: monospace; font-weight: bold;"></label>
+                    <input asp-for="DateReceived" class="form-control form-control-sm" />
+                    <span class="text-danger" asp-validation-for="DateReceived"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="AdditionalDetails" class="form-label text-uppercase" style="font-family: monospace; font-weight: bold;"></label>
+                    <textarea asp-for="AdditionalDetails" class="form-control form-control-sm"></textarea>
+                    <span class="text-danger" asp-validation-for="AdditionalDetails"></span>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive pt-3">
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Product Name</th>
+                        <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Quantity</th>
+                        <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Unit Price</th>
+                        <th><button type="button" class="btn btn-primary btn-sm" onclick="AddItem(this)"><i class="fa fa-plus-circle"></i></button></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    @for (int i = 0; i < Model.GoodReceivedDetails.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <select class="form-control form-control-sm form-select form-select-sm" asp-for="@Model.GoodReceivedDetails[i].ProductId" asp-items="@ViewBag.Product">
+                                    <option value="">Choose Product</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="@Model.GoodReceivedDetails[i].ProductId"></span>
+                            </td>
+                            <td>
+                                <input class="form-control form-control-sm" asp-for="@Model.GoodReceivedDetails[i].Qty" />
+                                <span class="text-danger" asp-validation-for="@Model.GoodReceivedDetails[i].Qty"></span>
+                            </td>
+                            <td>
+                                <input type="hidden" asp-for="@Model.GoodReceivedDetails[i].IsDeleted" />
+                                <input class="form-control form-control-sm" asp-for="@Model.GoodReceivedDetails[i].UnitPrice" />
+                                <span class="text-danger" asp-validation-for="@Model.GoodReceivedDetails[i].UnitPrice"></span>
+                            </td>
+                            <td><button type="button" onclick="btnDelete(this)" class="btn btn-danger btn-sm"><i class="fa fa-minus-circle"></i></button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group pull-right pt-3">
+            <button class="btn btn-primary" type="submit"><i class="fa fa-plus-circle"></i> Good Received</button>
+            <a class="btn btn-danger" asp-controller="GoodReceived" asp-action="Index"><i class="fa fa-window-close"></i></a>
+        </div>
+        <div class="form-group">
+            <select id="codeList" asp-items="@ViewBag.InvoiceCode" style="visibility:hidden;"></select>
+        </div>
+    </form>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.supplierSelect').select2();
+        });
+        function btnDelete(btn) {
+            var tbody = document.getElementById('tbody');
+            var row = tbody.getElementsByTagName('tr');
+            if (row.length == 1) {
+                alert("You can not remove this Row");
+                return;
+            }
+            var btnIdx = btn.id.replaceAll('btnRemove-', '');
+            var idOfDeleted = btnIdx + "__IsDeleted";
+            var hideIsDeletedId = document.querySelector("[id$= '" + idOfDeleted + "']").id;
+            document.getElementById(hideIsDeletedId).value = "true";
+            $(btn).parents('tr').hide();
+            //$(btn).closest('tr').remove();
+        }
+        function AddItem(btn) {
+            var table = document.getElementById('tbody');
+            var row = table.getElementsByTagName('tr');
+
+            var rowOuterHtml = row[row.length - 1].outerHTML;
+
+            var lastRowIdx = row.length - 1;
+            var nextRowIdx = eval(lastRowIdx) + 1;
+
+            rowOuterHtml = rowOuterHtml.replaceAll('_' + lastRowIdx + '_', '_' + nextRowIdx + '_');
+            rowOuterHtml = rowOuterHtml.replaceAll('[' + lastRowIdx + ']', '[' + nextRowIdx + ']');
+            rowOuterHtml = rowOuterHtml.replaceAll('-' + lastRowIdx, '-' + nextRowIdx);
+
+            var newRow = table.insertRow();
+            newRow.innerHTML = rowOuterHtml;
+        }
+        function GetInvoiceCode(PInvoiceHeaderId) {
+            var selectList = document.getElementById('codeList');
+            var displaycode = document.getElementById('invoiceCode');
+            var items = selectList.options;
+            var codeValues = PInvoiceHeaderId.value;
+            for (var i = items.length - 1; i >= 0; i--) {
+                if (items[i].value == codeValues) {
+                    displaycode.value = items[i].text;
+                    return;
+                }
+            }
+        }
+    </script>
+}

@@ -90,12 +90,7 @@
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
+            <li class="nav-item"><a class="nav-link collapsed" href="#"><i class="bi bi-grid"></i><span>Dashboard</span></a></li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
@@ -115,12 +110,8 @@
                     <i class="bi bi-bar-chart"></i><span>Sales</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a asp-area="" asp-controller="Customer" asp-action="Index"><i class="bi bi-circle"></i><span>Customers</span></a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Invoice" asp-action="Index"><i class="bi bi-circle"></i><span>Sales Invoices</span></a>
-                    </li>
+                    <li><a asp-area="" asp-controller="Customer" asp-action="Index"><i class="bi bi-circle"></i><span>Customers</span></a></li>
+                    <li><a asp-area="" asp-controller="Invoice" asp-action="Index"><i class="bi bi-circle"></i><span>Sales Invoices</span></a></li>
                 </ul>
             </li><!-- End Charts Nav -->
 
@@ -129,12 +120,9 @@
                     <i class="bi bi-bar-chart"></i><span>Purchases</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a asp-area="" asp-controller="Supplier" asp-action="Index"><i class="bi bi-circle"></i><span>Suppliers</span></a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="HeaderInvoice" asp-action="Index"><i class="bi bi-circle"></i><span>Purchase Invoice</span></a>
-                    </li>
+                    <li><a asp-area="" asp-controller="Supplier" asp-action="Index"><i class="bi bi-circle"></i><span>Suppliers</span></a></li>
+                    <li><a asp-area="" asp-controller="HeaderInvoice" asp-action="Index"><i class="bi bi-circle"></i><span>Purchase Invoice</span></a></li>
+                    <li><a asp-area="" asp-controller="GoodReceived" asp-action="Index"><i class="bi bi-circle"></i><span>Goods Received</span></a></li>
                 </ul>
             </li><!-- End Icons Nav -->
 
@@ -162,10 +150,7 @@
                 <div class="col-lg-12">
 
                     <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">@ViewData["Header"]</h5>
-                            @RenderBody()
-                        </div>
+                        @RenderBody()
                     </div>
 
                 </div>

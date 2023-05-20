@@ -56,12 +56,12 @@ namespace EmployeeClient.Controllers
                 var result = invoiceService.CreateInvoice(invoice);
                 if (result != null)
                 {
-                    notyfService.Success("Invoice Created Successfully.");
+                    notyfService.Success("Sales Invoice Created Successfully.");
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    notyfService.Error("Failed to Create Invoice!!");
+                    notyfService.Error("Failed to Create Sales Invoice!!");
                     return View(result);
                 }
             }
@@ -97,12 +97,12 @@ namespace EmployeeClient.Controllers
                 var result = invoiceService.UpdateInvoice(invoice);
                 if (result != null)
                 {
-                    notyfService.Success("Invoice Updated Successfully.");
+                    notyfService.Success("Sales Invoice Updated Successfully.");
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    notyfService.Error("Failed to Update Invoices!!");
+                    notyfService.Error("Failed to Update Sales Invoices!!");
                     return View(result);
                 }
             }
@@ -126,9 +126,17 @@ namespace EmployeeClient.Controllers
         }
         public IActionResult Delete(int id)
         {
-            invoiceService.DeleteInvoice(id);
-            notyfService.Success("Invoices Deleted Successfully.");
-            return RedirectToAction("Index");
+            var result = invoiceService.DeleteInvoice(id);
+            if (result)
+            {
+                notyfService.Success("Sales Invoices Deleted Successfully.");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                notyfService.Error("Error Occurred While Deleting Sales Invoices!!");
+                return View(result);
+            }
         }
     }
 }

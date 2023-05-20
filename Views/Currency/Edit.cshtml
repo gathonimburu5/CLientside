@@ -1,47 +1,51 @@
 ﻿@model EmployeeClient.Models.Domain.Currency
 @{
     ViewData["Title"] = "Edit Currency";
-    ViewData["Header"] = "Updating Currency";
 }
-<form asp-controller="Currency" asp-action="Edit">
-    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-    <div class="col-md-8">
-        <input type="hidden" asp-for="CurrencyId" />
-        <div class="form-group">
-            <label class="form-label" asp-for="CurrencyName"></label>
-            <input class="form-control" asp-for="CurrencyName" oninput="this.value = this.value.toUpperCase()" />
-            <span class="text-danger" asp-validation-for="CurrencyName"></span>
+<div class="card-header">
+    <h4 style="font-family: monospace; font-weight: bold;">Updating Currency</h4>
+</div>
+<div class="card-body">
+    <form asp-controller="Currency" asp-action="Edit">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="col-md-8">
+            <input type="hidden" asp-for="CurrencyId" />
+            <div class="form-group">
+                <label style="font-family: monospace; font-weight: bold;" class="form-label" asp-for="CurrencyName"></label>
+                <input class="form-control" asp-for="CurrencyName" oninput="this.value = this.value.toUpperCase()" />
+                <span class="text-danger" asp-validation-for="CurrencyName"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-family: monospace; font-weight: bold;" class="form-label" asp-for="Abbreviation"></label>
+                <input class="form-control" asp-for="Abbreviation" oninput="this.value = this.value.toUpperCase()" />
+                <span class="text-danger" asp-validation-for="Abbreviation"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-family: monospace; font-weight: bold;" class="form-label" asp-for="ExchangeRate"></label>
+                <input class="form-control" asp-for="ExchangeRate" />
+                <span class="text-danger" asp-validation-for="ExchangeRate"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-family: monospace; font-weight: bold;" class="form-label" asp-for="CountryName"></label>
+                <input class="form-control" asp-for="CountryName" oninput="this.value = this.value.toUpperCase()" />
+                <span class="text-danger" asp-validation-for="CountryName"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-family: monospace; font-weight: bold;" class="form-label" asp-for="Status"></label>
+                <select class="form-control form-control-sm form-select form-select-sm select2 statusSelect" asp-for="Status">
+                    <option>Choose Status</option>
+                    <option>Active</option>
+                    <option>In-Active</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Status"></span>
+            </div>
+            <div class="form-group pull-right pt-3">
+                <button class="btn btn-success" type="submit"><i class="fa fa-edit"></i> Currency</button>
+                <a class="btn btn-danger" asp-controller="Currency" asp-action="Index"><i class="fa fa-close"></i></a>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="form-label" asp-for="Abbreviation"></label>
-            <input class="form-control" asp-for="Abbreviation" oninput="this.value = this.value.toUpperCase()" />
-            <span class="text-danger" asp-validation-for="Abbreviation"></span>
-        </div>
-        <div class="form-group">
-            <label class="form-label" asp-for="ExchangeRate"></label>
-            <input class="form-control" asp-for="ExchangeRate" />
-            <span class="text-danger" asp-validation-for="ExchangeRate"></span>
-        </div>
-        <div class="form-group">
-            <label class="form-label" asp-for="CountryName"></label>
-            <input class="form-control" asp-for="CountryName" oninput="this.value = this.value.toUpperCase()" />
-            <span class="text-danger" asp-validation-for="CountryName"></span>
-        </div>
-        <div class="form-group">
-            <label class="form-label" asp-for="Status"></label>
-            <select class="form-control form-control-sm form-select form-select-sm select2 statusSelect" asp-for="Status">
-                <option>Choose Status</option>
-                <option>Active</option>
-                <option>In-Active</option>
-            </select>
-            <span class="text-danger" asp-validation-for="Status"></span>
-        </div>
-        <div class="form-group pull-right pt-3">
-            <button class="btn btn-success" type="submit"><i class="fa fa-edit"></i> Currency</button>
-            <a class="btn btn-danger" asp-controller="Currency" asp-action="Index"><i class="fa fa-close"></i></a>
-        </div>
-    </div>
-</form>
+    </form>
+</div>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

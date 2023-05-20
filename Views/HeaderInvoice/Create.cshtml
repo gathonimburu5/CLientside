@@ -11,14 +11,14 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <label class="form-label" style="font-weight: bold;" asp-for="InvoiceCode"></label>
+                    <label class="form-label" style="font-weight: bold; font-family: monospace;" asp-for="InvoiceCode"></label>
                     <input class="form-control form-control-sm" asp-for="InvoiceCode" readonly />
                     <span class="text-danger" asp-validation-for="InvoiceCode"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-label" style="font-weight: bold;" asp-for="SupplierId"></label>
+                    <label class="form-label" style="font-weight: bold; font-family: monospace;" asp-for="SupplierId"></label>
                     <select class="form-select form-select-lg select2 form-control form-control-lg text-uppercase supplierSelectList" asp-for="SupplierId" asp-items="@ViewBag.Supplier">
                         <option value="">Choose Supplier</option>
                     </select>
@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label class="form-label" style="font-weight: bold;" asp-for="InvoiceDate"></label>
+                    <label class="form-label" style="font-weight: bold; font-family: monospace;" asp-for="InvoiceDate"></label>
                     <input class="form-control form-control-sm" asp-for="InvoiceDate" />
                     <span class="text-danger" asp-validation-for="InvoiceDate"></span>
                 </div>
@@ -36,14 +36,14 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="form-group">
-                    <label class="form-label" style="font-weight: bold;" asp-for="Description"></label>
+                    <label class="form-label" style="font-weight: bold; font-family: monospace;" asp-for="Description"></label>
                     <textarea class="form-control form-control-sm" style="height: 30px;" asp-for="Description" oninput="this.value = this.value.toUpperCase()"></textarea>
                     <span class="text-danger" asp-validation-for="Description"></span>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label class="form-label" style="font-weight: bold;" asp-for="InvoiceDue"></label>
+                    <label class="form-label" style="font-weight: bold; font-family: monospace;" asp-for="InvoiceDue"></label>
                     <input class="form-control form-control-sm" asp-for="InvoiceDue" />
                     <span class="text-danger" asp-validation-for="InvoiceDue"></span>
                 </div>
@@ -53,13 +53,13 @@
             <table class="table table-hover table-striped table-bordered">
                 <thead>
                     <tr class="text-uppercase">
-                        <td>Product</td>
-                        <td>Code</td>
-                        <td>Qty</td>
-                        <td>Unit Price</td>
-                        <td>Vat(%)</td>
-                        <td>Vat Amt</td>
-                        <td>Subtotal</td>
+                        <td style="font-family: monospace; font-weight: bold;" class="text-uppercase">Product</td>
+                        <td style="font-family: monospace; font-weight: bold;" class="text-uppercase">Code</td>
+                        <td style="font-family: monospace; font-weight: bold;" class="text-uppercase">Qty</td>
+                        <td style="font-family: monospace; font-weight: bold;" class="text-uppercase">Unit Price</td>
+                        <td style="font-family: monospace; font-weight: bold;" class="text-uppercase">Vat(%)</td>
+                        <td style="font-family: monospace; font-weight: bold;" class="text-uppercase">Vat Amt</td>
+                        <td style="font-family: monospace; font-weight: bold;" class="text-uppercase">Subtotal</td>
                         <td><button type="button" id="btnAdd" onclick="AddBtn(this);" class="btn btn-primary btn-sm"><i class="fa fa-plus-square"></i></button></td>
                     </tr>
                 </thead>
@@ -104,7 +104,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th class="text-end" colspan="6"><label class="form-label" asp-for="Total"></label></th>
+                        <th class="text-end" colspan="6"><label class="form-label" asp-for="Total" style="font-family: monospace; font-weight: bold;"></label></th>
                         <th><input readonly type="number" id="totalValue" onchange="CalculateTotal();" class="form-control form-control-sm" asp-for="Total"></th>
                         <th></th>
                     </tr>
@@ -112,8 +112,8 @@
             </table>
         </div>
         <div class="form-group pull-right pt-3">
-            <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-plus-circle"></i> Generate Invoice</button>
-            <a class="btn btn-danger btn-sm" asp-action="Index" asp-controller="HeaderInvoice"><i class="fa fa-close"></i></a>
+            <button type="submit" class="btn btn-success"><i class="fa fa-plus-circle"></i> Generate Purchase Invoice</button>
+            <a class="btn btn-danger" asp-action="Index" asp-controller="HeaderInvoice"><i class="fa fa-close"></i></a>
         </div>
         <div class="form-group">
             <select id="productCodeList" asp-items="@ViewBag.ProductCode" style="visibility: hidden;"></select>

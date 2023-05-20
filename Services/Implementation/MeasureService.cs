@@ -7,8 +7,8 @@ namespace EmployeeClient.Services.Implementation
 {
     public class MeasureService : IMeasureService
     {
-        private string url = "https://localhost:7243/api/Measure";
-        private HttpClient client = new HttpClient();
+        private readonly string url = "https://localhost:7243/api/Measure";
+        private readonly HttpClient client = new HttpClient();
         public MeasureUnit CreateMeasure(MeasureUnit model)
         {
             string json = JsonConvert.SerializeObject(model);
@@ -29,8 +29,7 @@ namespace EmployeeClient.Services.Implementation
 
         public bool DeleteMeasure(int id)
         {
-            url = url + "/" + id;
-            HttpResponseMessage responseMessage = client.DeleteAsync(url).Result;
+            HttpResponseMessage responseMessage = client.DeleteAsync(url + "/" + id).Result;
             if (!responseMessage.IsSuccessStatusCode)
             {
                 string result = responseMessage.Content.ReadAsStringAsync().Result;
@@ -60,12 +59,12 @@ namespace EmployeeClient.Services.Implementation
         public MeasureUnit GetMeasureById(int id)
         {
             MeasureUnit measureUnit = new MeasureUnit();
-            url = url + "/" + id;
-            HttpResponseMessage responseMessage = client.GetAsync(url).Result;
+            HttpResponseMessage responseMessage = client.GetAsync(url + "/" + id).Result;
             if (responseMessage.IsSuccessStatusCode)
             {
                 string result = responseMessage.Content.ReadAsStringAsync().Result;
                 var data = JsonConvert.DeserializeObject<MeasureUnit>(result);
+                if (data != null) measureUnit = data;
             }
             else
             {
@@ -77,10 +76,8 @@ namespace EmployeeClient.Services.Implementation
 
         public MeasureUnit UpdateMeasure(MeasureUnit model)
         {
-            int id = model.MeasureUnitId;
-            url = url + "/" + id;
             string json = JsonConvert.SerializeObject(model);
-            HttpResponseMessage responseMessage = client.PutAsync(url, new StringContent(json, Encoding.UTF8, "application/json")).Result;
+            HttpResponseMessage responseMessage = client.PutAsync(url + "/" + model.MeasureUnitId, new StringContent(json, Encoding.UTF8, "application/json")).Result;
             if (!responseMessage.IsSuccessStatusCode)
             {
                 string result = responseMessage.Content.ReadAsStringAsync().Result;

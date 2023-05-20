@@ -8,10 +8,9 @@
         <div class="col-md-2"><h4 style="font-family: monospace; font-weight: bold;">All Customer List</h4></div>
         <div class="col-md-8"></div>
         <div class="col-md-2">
-            <div class="form-group pull-right"><a class="btn btn-dark btn-sm" style="font-family: monospace; font-weight: bold;" asp-controller="Customer" asp-action="Create"><i class="fa fa-plus-square"></i> New Customer</a></div>
+            <div class="form-group pull-right"><a class="btn btn-dark btn-sm" style="font-family: monospace; font-weight: bold;" asp-controller="Customer" asp-action="Create"><i class="fa fa-plus-circle"></i> New Customer</a></div>
         </div>
     </div>
-    <h5></h5>
 </div>
 <div class="card-body">
     <div class="table-responsive">
@@ -44,8 +43,16 @@
                         <td>@customer.CreditLimit</td>
                         <td>@customer.Currency.Abbreviation</td>
                         <td>
-                            <a class="btn btn-success btn-sm" asp-controller="Customer" asp-action="Edit" asp-route-id="@customer.CustomerId">Edit</a>
-                            <a class="btn btn-danger btn-sm" asp-controller="Customer" asp-action="Delete" asp-route-id="@customer.CustomerId">Delete</a>
+                            <select class="form-select form-select-sm form-control form-control-sm" style="font-size: 12px; font-weight: bold; height: 30px; font-family: monospace;" onchange="ActionsConfirmation(event)">
+                                <option value="">Choose Actions</option>
+                                <option value="@Url.Action("Create","Invoice", new{id=customer.CustomerId})">Generate Invoice</option>
+                                <option value="@Url.Action("Statement", "Customer", new { id = customer.CustomerId })">Customer Statements</option>
+                                <option value="@Url.Action("Edit", "Customer", new { id = customer.CustomerId })">Edit Customers</option>
+                                <option value="@Url.Action("Payment", "Customer", new{ id = customer.CustomerId })">Send Notice of Payment</option>
+                                <option value="@Url.Action("SuspendCustomer", "Customer", new{id=customer.CustomerId})">Suspend/Hold Customer</option>
+                                <option value="@Url.Action("CustomerLedger", "Customer",new{id=customer.CustomerId})">Customer Ledger</option>
+                                <option value="@Url.Action("CustomerActivities", "Customer", new{id=customer.CustomerId})">View Customer Activities</option>
+                            </select>
                         </td>
                     </tr>
                 }
@@ -53,3 +60,29 @@
         </table>
     </div>
 </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        function ActionsConfirmation(event) {
+            var selectEvent = event.target;
+            var value = selectEvent.value;
+            if (value.startsWith("/Invoice/Create/")) {
+                window.location.href = value;
+            } else if (value.startsWith("/Customer/Statement/")){
+                window.location.href = value;
+            } else if (value.startsWith("/Customer/Edit/")) {
+                window.location.href = value;
+            } else if (value.startsWith("/Customer/Payment/")) {
+                window.location.href = value;
+            } else if (value.startsWith("/Customer/SuspendCustomer/")) {
+                window.location.href = value;
+            } else if (value.startsWith("/Customer/CustomerLedger/")) {
+                window.location.href = value;
+            } else if (value.startsWith("/Customer/CustomerActivities/")) {
+                window.location.href = value;
+            }
+        }
+    </script>
+}

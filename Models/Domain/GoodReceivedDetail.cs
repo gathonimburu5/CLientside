@@ -9,8 +9,11 @@ namespace EmployeeClient.Models.Domain
         public int ProductId { get; set; }
         public virtual Product? Product { get; set; }
         public int Qty { get; set; }
+        public decimal UnitPrice { get; set; }
         [ForeignKey("GetGoodReceivedHeader")]
         public int GoodReceivedHeaderId { get; set; }
         public virtual GoodReceivedHeader? GetGoodReceivedHeader { get; set; }
+        [NotMapped]
+        public bool IsDeleted { get; set; } = false;
     }
 }

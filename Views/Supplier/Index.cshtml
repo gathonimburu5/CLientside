@@ -43,7 +43,7 @@
                         <td>@supplier.PhoneNumber</td>
                         <td>@supplier.Currency.CurrencyName</td>
                         <td>
-                            <select class="form-control form-control-sm form-select form-select-sm" style="font-size: 12px; font-weight: bold; height: 30px;" onchange="ClickConfirmation(event)">
+                            <select class="form-control form-control-sm form-select form-select-sm" style="font-size: 12px; font-family: monospace; font-weight: bold; height: 30px;" onchange="ClickConfirmation(event)">
                                 <option value="">Select Action</option>
                                 <option value="@Url.Action("Edit", "Supplier", new{ id = @supplier.SupplierId })">Update Suppliers</option>
                                 <option value="@Url.Action("Satement", "Supplier")">Supplier Statement</option>

@@ -8,17 +8,17 @@
 </div>
 <div class="card-body">
     <div class="col-md-8">
-        <form asp-action="Create">
+        <form asp-action="Create" asp-controller="Measure">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MeasureUnitName" class="control-label"></label>
+                <label asp-for="MeasureUnitName" class="control-label" style="font-family: monospace; font-weight: bold;"></label>
                 <input asp-for="MeasureUnitName" class="form-control" />
                 <span asp-validation-for="MeasureUnitName" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="Status" />
-            <div class="form-group pt-2">
-                <a class="btn btn-danger btn-lg" asp-controller="Measure" asp-action="Index"><i class="fa fa-close"></i> Close</a>
-                <button class="btn btn-dark btn-lg" type="submit"><i class="fa fa-plus"></i> Create Unit</button>
+            <div class="form-group pull-right pt-3">
+                <button class="btn btn-dark" type="submit"><i class="fa fa-plus"></i> Create Unit</button>
+                <a class="btn btn-danger" asp-controller="Measure" asp-action="Index"><i class="fa fa-close"></i></a>
             </div>
         </form>
     </div>

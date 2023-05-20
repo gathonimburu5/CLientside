@@ -3,7 +3,7 @@
     ViewData["Title"] = "Create Product";
 }
 <div class="card-header">
-    <h5>Create Products</h5>
+    <h5 style="font-family: monospace; font-weight: bold;">Create Products</h5>
 </div>
 <div class="card-body">
     <form asp-controller="Product" asp-action="Create" enctype="multipart/form-data">
@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="form-group">
-                    <label asp-for="ProductPhoto">Product Image</label>
+                    <label style="font-family: monospace; font-weight: bold;" asp-for="ProductPhoto">Product Image</label>
                     <img src="~/Uploads/download (1).png" class="img-fluid pb-2" style="width: 200px; height: 200px" id="imgPreview" />
                     <input id="uploadProductImage" class="position-absolute invisible" onchange="Previewing(event);" asp-for="ProductPhoto" />
                     <label class="btn btn-secondary btn-sm" for="uploadProductImage" style="width: 200px;">Upload Product Photo</label>
@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="ProductName" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="ProductName" class="control-label"></label>
                             <div class="input-group">
                                 <div class="input-group-text" id="productIcon"><i class="fa fa-product-hunt"></i></div>
                                 <input asp-for="ProductName" class="form-control form-control-sm" aria-describedby="productIcon" oninput="this.value = this.value.toUpperCase()" />
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="ProductCode" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="ProductCode" class="control-label"></label>
                             <input asp-for="ProductCode" class="form-control form-control-sm" readonly />
                             <span asp-validation-for="ProductCode" class="text-danger"></span>
                         </div>
@@ -41,14 +41,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="ProductQty" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="ProductQty" class="control-label"></label>
                             <input asp-for="ProductQty" class="form-control form-control-sm" />
                             <span asp-validation-for="ProductQty" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="ProductVat" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="ProductVat" class="control-label"></label>
                             <input asp-for="ProductVat" class="form-control form-control-sm" />
                             <span asp-validation-for="ProductVat" class="text-danger"></span>
                         </div>
@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="CategoryId" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="CategoryId" class="control-label"></label>
                             <select asp-for="CategoryId" class="form-control form-control-sm form-select-sm select2 form-select categoryData" asp-items="@ViewBag.Category">
                                 <option value="">Choose Category</option>
                             </select>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="ProductReorderLevel" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="ProductReorderLevel" class="control-label"></label>
                             <input asp-for="ProductReorderLevel" class="form-control form-control-sm" />
                             <span asp-validation-for="ProductReorderLevel" class="text-danger"></span>
                         </div>
@@ -75,14 +75,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="ProductBuyingPrice" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="ProductBuyingPrice" class="control-label"></label>
                             <input asp-for="ProductBuyingPrice" class="form-control form-control-sm" />
                             <span asp-validation-for="ProductBuyingPrice" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="ProductSellingPrice" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="ProductSellingPrice" class="control-label"></label>
                             <input asp-for="ProductSellingPrice" class="form-control form-control-sm" />
                             <span asp-validation-for="ProductSellingPrice" class="text-danger"></span>
                         </div>
@@ -91,7 +91,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="ProductSupplier" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="ProductSupplier" class="control-label"></label>
                             <div class="input-group">
                                 <div class="input-group-text" id="supplierUserIcon"><i class="fa fa-user"></i></div>
                                 <input asp-for="ProductSupplier" class="form-control form-control-sm" aria-describedby="supplierUserIcon" oninput="this.value = this.value.toUpperCase()" />
@@ -101,7 +101,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label asp-for="MeasureUnitId" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="MeasureUnitId" class="control-label"></label>
                             <select asp-for="MeasureUnitId" class="form-control form-control-sm select2 form-select-sm form-select measureData" asp-items="@ViewBag.Measure">
                                 <option value="">Select Measure Unit</option>
                             </select>
@@ -112,7 +112,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label asp-for="ProductDescription" class="control-label"></label>
+                            <label style="font-family: monospace; font-weight: bold;" asp-for="ProductDescription" class="control-label"></label>
                             <textarea asp-for="ProductDescription" class="form-control form-control-sm" oninput="this.value = this.value.toUpperCase()"></textarea>
                             <span asp-validation-for="ProductDescription" class="text-danger"></span>
                         </div>
@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="form-group pull-right pt-3">
-            <button type="submit" class="btn btn-dark btn-lg"><i class="fa fa-plus"></i> Create Product</button>
+            <button type="submit" class="btn btn-dark btn-lg"><i class="fa fa-plus-squre"></i> Create Product</button>
             <a class="btn btn-danger btn-lg" asp-controller="Product" asp-action="Index"><i class="fa fa-close"></i></a>
         </div>
     </form>

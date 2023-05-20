@@ -1,0 +1,60 @@
+﻿@using EmployeeClient.Models.Domain;
+@model IEnumerable<GoodReceivedHeader>
+@{
+    ViewData["Title"] = "Good Received";
+}
+<div class="card-header">
+    <div class="row">
+        <div class="col-md-6"><h4 style="font-family: monospace; font-weight: bold;">List of Goods Received</h4></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-2">
+            <div class="form-group pull-right"><a class="btn btn-dark btn-sm" style="font-family: monospace; font-weight: bold;" asp-controller="GoodReceived" asp-action="Create"><i class="fa fa-plus-circle"></i> Create Goods Received</a></div>
+        </div>
+    </div>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table dataTable table-hover table-striped">
+            <thead>
+                <tr>
+                    <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Received Date</th>
+                    <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Supplier</th>
+                    <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Invoice No</th>
+                    <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Created On</th>
+                    <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var good in Model)
+                {
+                    <tr>
+                        <td>@good.DateReceived.ToShortDateString()</td>
+                        <td style="font-family: monospace; font-weight: bold;">@good.SupplierName</td>
+                        <td>@good.PInvoiceHeader?.InvoiceCode</td>
+                        <td>@good.DateReceived.ToShortDateString()</td>
+                        <td>
+                            <select class="form-select form-select-sm form-control form-control-sm" style="font-size: 12px; font-weight: bold; height: 30px; font-family: monospace;" onchange="ActionsConfirmation(event)">
+                                <option value="">Choose Actions</option>
+                                <option value="@Url.Action("Detail","GoodReceived", new{ id = good.GoodReceivedHeaderId })">Generate Invoice</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        function ActionsConfirmation(event) {
+            var selectEvent = event.target;
+            var value = selectEvent.value;
+            if (value.startsWith("/GoodReceived/Detail/")) {
+                window.location.href = value;
+            }
+        }
+    </script>
+}

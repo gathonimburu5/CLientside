@@ -43,7 +43,7 @@
                             <td><span class="text-danger"><i class="fa fa-check-circle-o" aria-hidden="true"> @discount.Status</i></span></td>
                         }
                         <td>
-                            <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px;" onchange="ActionChange(event)">
+                            <select class="form-select form-select-sm form-control" style="font-size: 12px; font-family: monospace; font-weight: bold; height: 30px;" onchange="ActionChange(event)">
                                 <option value="">Choose Action</option>
                                 <option value="@Url.Action("Edit","Discount", new { id = discount.DiscountId })">Edit Discount</option>
                             </select>

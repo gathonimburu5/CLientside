@@ -3,32 +3,30 @@
     ViewData["Title"] = "Edit Supplier";
 }
 <div class="card-header">
-    <h4>Update Supplier</h4>
+    <h4 style="font-family: monospace; font-weight: bold;">Update Supplier</h4>
 </div>
 <div class="card-body">
     <form asp-action="Edit">
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <input type="hidden" asp-for="SupplierId" />
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-lg-12">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label" asp-for="SupplierCode"></label>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label" asp-for="SupplierCode"></label>
                     <input class="form-control" asp-for="SupplierCode" readonly />
                     <span class="text-danger" asp-validation-for="SupplierCode"></span>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="SupplierName"></label>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label text-uppercase" asp-for="SupplierName"></label>
                     <input class="form-control form-control-sm text-uppercase" asp-for="SupplierName" oninput="this.value = this.value.toUpperCase()" />
                     <span class="text-danger" asp-validation-for="SupplierName"></span>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="SupplierEmail"></label>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label text-uppercase" asp-for="SupplierEmail"></label>
                     <div class="input-group">
                         <div class="input-group-text" id="emailIcon"><i class="fa fa-envelope-square"></i></div>
                         <input class="form-control form-control-sm" asp-for="SupplierEmail" aria-describedby="emailIcon" oninput="this.value = this.value.toLowerCase()" />
@@ -38,65 +36,63 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="BankName"></label>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label text-uppercase" asp-for="BankName"></label>
                     <input class="form-control form-control-sm" asp-for="BankName" oninput="this.value = this.value.toUpperCase()" />
                     <span class="text-danger" asp-validation-for="BankName"></span>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="Branch"></label>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label text-uppercase" asp-for="Branch"></label>
                     <input class="form-control form-control-sm" asp-for="Branch" oninput="this.value = this.value.toUpperCase()" />
                     <span class="text-danger" asp-validation-for="Branch"></span>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="AccountNumber"></label>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label text-uppercase" asp-for="AccountNumber"></label>
                     <input class="form-control form-control-sm" asp-for="AccountNumber" />
                     <span class="text-danger" asp-validation-for="AccountNumber"></span>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-lg-6">
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label" style="font-weight: bold;" asp-for="CurrencyId"></label>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label text-uppercase" asp-for="CurrencyId"></label>
                     <select class="form-control form-control-sm form-select form-select-sm select2 CurrencyData" asp-for="CurrencyId" asp-items="@ViewBag.Currency">
                         <option value="">Select Currency</option>
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="PostalAddress"></label>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label text-uppercase" asp-for="PostalAddress"></label>
                     <input class="form-control form-control-sm" asp-for="PostalAddress" />
                     <span class="text-danger" asp-validation-for="PostalAddress"></span>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="PhysicalAddress"></label>
-                    <input class="form-control form-control-sm" asp-for="PhysicalAddress" oninput="this.value = this.value.toUpperCase()"/>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label text-uppercase" asp-for="PhysicalAddress"></label>
+                    <input class="form-control form-control-sm" asp-for="PhysicalAddress" oninput="this.value = this.value.toUpperCase()" />
                     <span class="text-danger" asp-validation-for="PhysicalAddress"></span>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="KRAPin"></label>
-                    <input class="form-control form-control-sm text-uppercase" asp-for="KRAPin" oninput="this.value = this.value.toUpperCase()"/>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label text-uppercase" asp-for="KRAPin"></label>
+                    <input class="form-control form-control-sm text-uppercase" asp-for="KRAPin" oninput="this.value = this.value.toUpperCase()" />
                     <span class="text-danger" asp-validation-for="KRAPin"></span>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-lg-6">
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label class="form-label text-uppercase" style="font-weight: bold;" asp-for="PhoneNumber"></label>
+                    <label style="font-family: monospace; font-weight: bold;" class="form-label text-uppercase" asp-for="PhoneNumber"></label>
                     <div class="input-group">
                         <div class="input-group-text" id="phoneNumberIcon"><i class="fa fa-phone-square"></i></div>
                         <input class="form-control form-control-sm" asp-for="PhoneNumber" aria-describedby="phoneNumberIcon" />

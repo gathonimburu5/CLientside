@@ -1,6 +1,6 @@
 ﻿using EmployeeClient.Models.Domain;
 
-namespace EmployeeClient.Services.Implementation
+namespace EmployeeClient.Services.Interface
 {
     public interface IReceivedService
     {

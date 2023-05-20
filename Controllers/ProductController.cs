@@ -93,9 +93,17 @@ namespace EmployeeClient.Controllers
         }
         public IActionResult Delete(int id)
         {
-            productService.DeleteProduct(id);
-            notyfService.Success("Product Details Deleted Successful");
-            return RedirectToAction(nameof(Index), "Product");
+            var result = productService.DeleteProduct(id);
+            if (result)
+            {
+                notyfService.Success("Product Details Deleted Successful");
+                return RedirectToAction(nameof(Index), "Product");
+            }
+            else
+            {
+                notyfService.Error("Error Occurred while Deleting Products!!");
+                return View(result);
+            }
         }
     }
 }

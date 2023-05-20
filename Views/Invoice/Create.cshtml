@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-2 col-sm-2 col-lg-2">
                 <div class="form-group">
-                    <label asp-for="InvoiceCode" class="control-label"></label>
+                    <label asp-for="InvoiceCode" class="control-label" style="font-family: monospace; font-weight: bold;"></label>
                     <div class="input-group">
                         <div class="input-group-text" id="codeIcon"><i class="fa fa-barcode"></i></div>
                         <input asp-for="InvoiceCode" class="form-control form-control-sm" aria-describedby="codeIcon" readonly />
@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class="form-group">
-                    <label asp-for="CustomerId" class="control-label"></label>
+                    <label asp-for="CustomerId" class="control-label" style="font-family: monospace; font-weight: bold;"></label>
                     <select asp-for="CustomerId" class="form-control form-select form-select2 select2 form-select-lg customerData" asp-items="@ViewBag.Customer">
                         <option value="">Choose Customer</option>
                     </select>
@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-3 col-sm-3 col-lg-3">
                 <div class="form-group">
-                    <label asp-for="InvoiceDate" class="control-label"></label>
+                    <label asp-for="InvoiceDate" class="control-label" style="font-family: monospace; font-weight: bold;"></label>
                     <div class="input-group">
                         <div class="input-group-text" id="dateInvoiceCreated"><i class="fa fa-calendar"></i></div>
                         <input asp-for="InvoiceDate" class="form-control form-control-sm" aria-describedby="dateInvoiceCreated" />
@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label asp-for="InvoiceDateDue" class="control-label"></label>
+                    <label asp-for="InvoiceDateDue" class="control-label" style="font-family: monospace; font-weight: bold;"></label>
                     <div class="input-group">
                         <div class="input-group-text" id="dateDueofInvoice"><i class="fa fa-calendar"></i></div>
                         <input asp-for="InvoiceDateDue" class="form-control form-control-sm" aria-describedby="dateDueofInvoice" />
@@ -51,14 +51,14 @@
             <table class="table table-hover table-bordered table-sm">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>QTY</th>
-                        <th>Unit Price</th>
-                        <th>VAT</th>
-                        <th>Discount</th>
-                        <th>Discount Value</th>
-                        <th>Sub Total</th>
-                        <th><button type="button" id="btnAdd" onclick="AddItem(this);" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button></th>
+                        <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Product</th>
+                        <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">QTY</th>
+                        <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Unit Price</th>
+                        <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">VAT</th>
+                        <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Discount</th>
+                        <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Discount Value</th>
+                        <th style="font-family: monospace; font-weight: bold;" class="text-uppercase">Sub Total</th>
+                        <th><button type="button" id="btnAdd" onclick="AddItem(this);" class="btn btn-primary btn-sm"><i class="fa fa-plus-square"></i></button></th>
                     </tr>
                 </thead>
                 <tbody id="tbody">
@@ -101,13 +101,13 @@
                                 <input type="number" readonly class="form-control form-control-sm pull-right" onchange="CalculateSubtotal();" asp-for="@Model.InvoiceDetails[i].SubTotal" />
                                 <span class="text-danger" asp-validation-for="@Model.InvoiceDetails[i].SubTotal"></span>
                             </td>
-                            <td><button type="button" id="btnRemove-@i" onclick="btnDelete(this);" class="btn btn-danger btn-sm"><i class="fa fa-close"></i></button></td>
+                            <td><button type="button" id="btnRemove-@i" onclick="btnDelete(this);" class="btn btn-danger btn-sm"><i class="fa fa-minus-square"></i></button></td>
                         </tr>
                     }
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th class="text-end" colspan="6"><label asp-for="Total" class="control-label">Total value</label></th>
+                        <th class="text-end" colspan="6"><label asp-for="Total" class="control-label" style="font-family: monospace; font-weight: bold;">Total value</label></th>
                         <th>
                             <input id="totalValue" type="number" step="0.001" readonly onchange="CalculateSubtotal();" asp-for="Total" style="text-decoration-style: double; text-decoration-line: underline;" class="form-control form-control-sm pull-right" />
                             <span asp-validation-for="Total" class="text-danger"></span>
@@ -118,8 +118,8 @@
             </table>
         </div>
         <div class="form-group pt-3 pull-right">
-            <button class="btn btn-primary btn-lg" type="submit">Create Invoice</button>
-            <a class="btn btn-danger btn-lg" asp-controller="Invoice" asp-action="Index"><i class="fa fa-close"></i></a>
+            <button class="btn btn-primary" type="submit"><i class="fa fa-plus-circle"></i> Create Invoice</button>
+            <a class="btn btn-danger" asp-controller="Invoice" asp-action="Index"><i class="fa fa-close"></i></a>
         </div>
         <div class="form-group">
             <select id="buyingPrice" asp-items="@ViewBag.GetBuyingPrice" style="visibility: hidden;"></select>

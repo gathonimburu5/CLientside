@@ -41,7 +41,7 @@
                         <td>@invoice.Customer.CreditLimit</td>
                         <td>@invoice.Total</td>
                         <td>
-                            <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px;"  onchange="DeleteConfirmation(event)">
+                            <select class="form-select form-select-sm form-control" style="font-size: 12px; font-family: monospace; font-weight: bold; height: 30px;" onchange="DeleteConfirmation(event)">
                                 <option value="">Choose Actions</option>
                                 <option value="@Url.Action("Edit","Invoice", new{ id = @invoice.InvoiceId})">Edit Invoice</option>
                                 <option value="@Url.Action("Detail","Invoice", new{ id = @invoice.InvoiceId})">View Invoice</option>

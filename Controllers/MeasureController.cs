@@ -27,7 +27,7 @@ namespace EmployeeClient.Controllers
             return View(measure);
         }
         [HttpPost]
-        public IActionResult Create([FromBody] MeasureUnit measure)
+        public IActionResult Create(MeasureUnit measure)
         {
             if (ModelState.IsValid)
             {

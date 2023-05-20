@@ -1,9 +1,9 @@
 ﻿using EmployeeClient.Models.Domain;
-using EmployeeClient.Services.Implementation;
+using EmployeeClient.Services.Interface;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace EmployeeClient.Services.Interface
+namespace EmployeeClient.Services.Implementation
 {
     public class ReceivedService : IReceivedService
     {

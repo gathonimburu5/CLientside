@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<EmployeeClient.Models.Domain.Product>
-
 @{
     ViewData["Title"] = "Product List";
 }
@@ -46,7 +45,7 @@
                         <td>@product.MeasureUnit.MeasureUnitName</td>
                         <td>@product.ProductDescription</td>
                         <td>
-                            <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px;" onchange="ActionChange(event)">
+                            <select class="form-select form-select-sm form-control" style="font-size: 12px; font-weight: bold; height: 30px; font-family: monospace;" onchange="ActionChange(event)">
                                 <option value="">Choose Action</option>
                                 <option value="@Url.Action("Edit","Product", new { id = @product.ProductId })">Edit Product</option>
                                 <option value="@Url.Action("Delete","Product", new { id = @product.ProductId })" data-code="@product.ProductCode">Delete Product</option>

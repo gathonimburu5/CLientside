@@ -17,12 +17,14 @@ namespace EmployeeClient.Controllers
         private readonly IHeaderInvoiceService headerService;
         private readonly ISupplierService supplierService;
         private readonly IProductService productService;
+        private readonly IReceivedService receivedService;
         private readonly INotyfService notificationService;
-        public HeaderInvoiceController(IHeaderInvoiceService headerService, ISupplierService supplierService, IProductService productService, INotyfService notificationService)
+        public HeaderInvoiceController(IHeaderInvoiceService headerService, ISupplierService supplierService, IProductService productService, IReceivedService receivedService, INotyfService notificationService)
         {
             this.headerService = headerService;
             this.supplierService = supplierService;
             this.productService = productService;
+            this.receivedService = receivedService;
             this.notificationService = notificationService;
         }
         public IActionResult Index()
@@ -69,6 +71,43 @@ namespace EmployeeClient.Controllers
             {
                 notificationService.Warning("Model Error Occurred, Please Check Your Model!!!");
                 return View(model);
+            }
+        }
+        [HttpGet]
+        public IActionResult GoodReceived(int id)
+        {
+            PInvoiceHeader header = headerService.GetHeaderById(id);
+            if (header == null) return BadRequest();
+            var supplierName = supplierService.GetSupplierById(header.SupplierId);
+            ViewBag.Product = productService.GetAllProducts().Select(x => new SelectListItem { Text = x.ProductName, Value = x.ProductId.ToString() }).ToList();
+            GoodReceivedHeader goods = new GoodReceivedHeader
+            {
+                PInvoiceHeader = header,
+                SupplierName = supplierName.SupplierName,
+            };
+            goods.GoodReceivedDetails.Add(new GoodReceivedDetail() { GoodReceivedDetailId = 1 });
+            return View(goods);
+        }
+        [HttpPost]
+        public IActionResult GoodReceived(GoodReceivedHeader header)
+        {
+            if (ModelState.IsValid)
+            {
+                var goods = headerService.CreateGood(header);
+                if (goods != null)
+                {
+                    notificationService.Success("Goods Received Generated Successfully.");
+                    return RedirectToAction(nameof(Index), "GoodReceived");
+                }
+                else
+                {
+                    notificationService.Error("Error Occurred while Generating Goods Received!!!");
+                    return View(goods);
+                }
+            }
+            else
+            {
+                return View(header);
             }
         }
         [HttpGet]
